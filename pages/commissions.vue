@@ -51,36 +51,15 @@
           <h3 class="font-semibold mb-2">Submit Request</h3>
           <p class="text-sm text-muted-foreground">Fill out the commission form with your ideas and requirements</p>
         </div>
-        <!-- Arrow 1 to 2 -->
-        <div class="hidden md:block absolute top-6 left-[calc(25%-1rem)] w-[calc(25%-2rem)]">
-          <svg class="w-full h-6" viewBox="0 0 100 24" preserveAspectRatio="none">
-            <line x1="0" y1="12" x2="85" y2="12" stroke="currentColor" stroke-width="2" class="text-primary/30"/>
-            <polygon points="85,8 85,16 100,12" fill="currentColor" class="text-primary/30"/>
-          </svg>
-        </div>
         <div class="text-center">
           <div class="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
           <h3 class="font-semibold mb-2">Consultation</h3>
           <p class="text-sm text-muted-foreground">Robert will review your request and discuss details</p>
         </div>
-        <!-- Arrow 2 to 3 -->
-        <div class="hidden md:block absolute top-6 left-[calc(50%-1rem)] w-[calc(25%-2rem)]">
-          <svg class="w-full h-6" viewBox="0 0 100 24" preserveAspectRatio="none">
-            <line x1="0" y1="12" x2="85" y2="12" stroke="currentColor" stroke-width="2" class="text-primary/30"/>
-            <polygon points="85,8 85,16 100,12" fill="currentColor" class="text-primary/30"/>
-          </svg>
-        </div>
         <div class="text-center">
           <div class="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
           <h3 class="font-semibold mb-2">Deposit</h3>
           <p class="text-sm text-muted-foreground">Secure your commission with a deposit payment</p>
-        </div>
-        <!-- Arrow 3 to 4 -->
-        <div class="hidden md:block absolute top-6 left-[calc(75%-1rem)] w-[calc(25%-2rem)]">
-          <svg class="w-full h-6" viewBox="0 0 100 24" preserveAspectRatio="none">
-            <line x1="0" y1="12" x2="85" y2="12" stroke="currentColor" stroke-width="2" class="text-primary/30"/>
-            <polygon points="85,8 85,16 100,12" fill="currentColor" class="text-primary/30"/>
-          </svg>
         </div>
         <div class="text-center">
           <div class="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
