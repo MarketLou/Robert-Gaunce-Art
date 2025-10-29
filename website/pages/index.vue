@@ -59,7 +59,7 @@
               <img src="/wolverine_watercolor.jpg" alt="Sketch Wolverine" class="w-full h-full object-cover" />
             </div>
             <div class="p-4">
-              <h3 class="font-semibold mb-2">Wolverine Sketch</h3>
+              <h3 class="font-semibold mb-2">Sketch Wolverine</h3>
               <p class="text-sm text-muted-foreground">Original artwork</p>
             </div>
           </div>
