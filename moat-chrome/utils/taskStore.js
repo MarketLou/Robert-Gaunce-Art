@@ -30,6 +30,7 @@ const TASK_STATUS = {
  * @param {string} taskData.selector - CSS selector for the target element
  * @param {Object} taskData.boundingRect - Element bounding rectangle {x, y, w, h}
  * @param {string} taskData.screenshotPath - Path to screenshot file
+ * @param {string} [taskData.url] - URL pathname where task was created
  * @returns {Object} Properly structured task object
  */
 function createTaskObject(taskData) {
@@ -44,6 +45,7 @@ function createTaskObject(taskData) {
         selector: taskData.selector,
         boundingRect: taskData.boundingRect || { x: 0, y: 0, w: 0, h: 0 },
         screenshotPath: taskData.screenshotPath || '',
+        url: taskData.url || window.location.pathname,
         status: TASK_STATUS.TO_DO,
         timestamp: Date.now()
     };
@@ -55,7 +57,7 @@ function createTaskObject(taskData) {
  * @returns {boolean} True if valid, throws error if invalid
  */
 function validateTaskObject(task) {
-    const requiredFields = ['id', 'title', 'comment', 'selector', 'status', 'timestamp'];
+    const requiredFields = ['id', 'title', 'comment', 'selector', 'url', 'status', 'timestamp'];
     
     for (const field of requiredFields) {
         if (!task.hasOwnProperty(field)) {

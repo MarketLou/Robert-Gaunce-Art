@@ -137,6 +137,44 @@ window.moatDebug.diagnoseConnection()
 window.moatDebug.checkSystemStatus()
 ```
 
+## 📋 Task Structure
+
+### **Task Object Fields**
+
+Each task created in Moat contains the following fields:
+
+```javascript
+{
+  "id": "uuid-v4",                    // Unique task identifier
+  "title": "Element Title",           // Short title for the task
+  "comment": "User annotation",       // Full user comment
+  "selector": "CSS selector",         // Target element selector
+  "boundingRect": {                   // Element position
+    "x": 0, "y": 0, "w": 0, "h": 0
+  },
+  "screenshotPath": "./screenshots/...", // Screenshot reference
+  "url": "/page-path",                // 🆕 URL pathname where task was created
+  "status": "to do",                  // Task status (to do/doing/done)
+  "timestamp": 1234567890             // Creation timestamp
+}
+```
+
+### **URL Field** 🆕
+
+The `url` field automatically captures the current page pathname when a task is created:
+- **Home page**: `url: "/"`
+- **Commissions**: `url: "/commissions"`
+- **Portfolio**: `url: "/portfolio"`
+
+This enables AI assistants to accurately determine which page file to edit when processing tasks, preventing confusion when similar selectors exist across multiple pages.
+
+**Example**:
+```markdown
+24. [x] Image: Farm Watercolor [/commissions] – "update this image"
+```
+
+The `[/commissions]` indicator shows this task belongs to the commissions page, not the home page.
+
 ## ✅ Key Points for Developers
 
 1. **No Hardcoded Paths**: Extension works with any directory name
@@ -144,6 +182,7 @@ window.moatDebug.checkSystemStatus()
 3. **Connection Required**: User must reconnect after browser restart
 4. **Relative Operations**: All file operations use directory handles
 5. **Graceful Fallbacks**: Multiple save mechanisms for reliability
+6. **URL Tracking**: All tasks now include page context for multi-page editing
 
 ## 🚀 Best Practices
 

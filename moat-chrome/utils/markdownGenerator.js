@@ -103,8 +103,9 @@ function generateMarkdownFromTasks(tasks) {
             const taskNumber = index + 1;
             const title = task.title || 'Untitled Task';
             const comment = truncateComment(task.comment);
+            const url = task.url ? ` [${task.url}]` : '';
 
-            markdown += `${taskNumber}. ${checkbox} ${title}`;
+            markdown += `${taskNumber}. ${checkbox} ${title}${url}`;
             if (comment) {
                 markdown += ` – "${comment}"`;
             }
