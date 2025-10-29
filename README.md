@@ -1,113 +1,159 @@
-# Robert Gaunce Art
+# Robert Gaunce Art Website
 
-A server-side rendered (SSR) portfolio and e-commerce website for watercolor artist Robert Gaunce, built with Nuxt 3 and integrated with Medusa.js for e-commerce functionality.
+A Nuxt 3 SSR website for watercolor artist Robert Gaunce, featuring portfolio showcase, commission booking, and e-commerce integration via Medusa.
 
-## 🎨 About
+## Tech Stack
 
-Robert Gaunce is a watercolor artist based in Paris, Kentucky, specializing in nature, wildlife, and portrait commissions. This website showcases his portfolio, accepts commission inquiries, and offers previous works for sale.
-
-## 🚀 Tech Stack
-
-- **Frontend**: Nuxt 3 (SSR), Vue 3, TypeScript
-- **UI Components**: Tailwind CSS
+- **Framework**: Nuxt 3 (SSR-first)
+- **UI Components**: shadcn-vue
+- **Styling**: Tailwind CSS
 - **State Management**: Pinia
-- **E-commerce**: Medusa.js (backend separate)
-- **Images**: @nuxt/image with optimization
-- **SEO**: @nuxtjs/seo with structured data
-- **Hosting**: Vercel
+- **E-commerce**: Medusa JS SDK
+- **Image Optimization**: @nuxt/image
+- **SEO**: @nuxtjs/seo
 
-## 📁 Project Structure
+## Features
+
+- ✅ Server-Side Rendering (SSR) for optimal SEO
+- ✅ Local SEO optimization for Paris/Lexington, Kentucky
+- ✅ Portfolio gallery with category filtering
+- ✅ Commission request system
+- ✅ E-commerce integration (ready for Medusa backend)
+- ✅ Responsive, mobile-first design
+- ✅ Artwork showcase and detail pages
+- ✅ Contact forms
+
+## Project Structure
 
 ```
-├── website/              # Nuxt 3 application
-│   ├── assets/          # Stylesheets, fonts
-│   ├── components/      # Vue components
-│   ├── layouts/         # Page layouts
-│   ├── pages/           # Route pages
-│   ├── plugins/         # Nuxt plugins
-│   ├── public/          # Static assets
-│   └── stores/          # Pinia stores
-└── .moat/              # Drawbridge task management
+website/
+├── app/               # App configuration
+├── assets/            # Static assets (CSS, images)
+│   └── css/           # Global styles
+├── components/        # Vue components
+│   ├── ui/           # shadcn-vue components
+│   ├── AppHeader.vue  # Navigation
+│   └── AppFooter.vue # Footer
+├── layouts/           # Layout components
+├── pages/             # Route pages
+├── plugins/           # Nuxt plugins
+├── stores/            # Pinia stores
+├── composables/       # Vue composables
+└── public/            # Public assets
+
 ```
 
-## 🛠️ Development
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
+- Node.js 18+ installed
+- npm or yarn package manager
 
-### Getting Started
+### Installation
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Copy environment variables:
+```bash
+cp .env.example .env
+```
+
+3. Update `.env` with your configuration:
+```env
+SITE_URL=https://robertgaunceart.com
+MEDUSA_BACKEND_URL=https://your-medusa-backend.com
+MEDUSA_API_KEY=your_publishable_api_key
+```
+
+### Development
+
+Start the development server:
 
 ```bash
-# Install dependencies
-cd website
-npm install
-
-# Run development server
 npm run dev
 ```
 
-Visit `http://localhost:3000`
+Visit `http://localhost:3000` to view the website.
 
-### Build for Production
+### Build
+
+Build for production:
 
 ```bash
-cd website
 npm run build
+```
+
+Preview the production build:
+
+```bash
 npm run preview
 ```
 
-## 🌐 Deployment
+## Pages
 
-The site is configured for Vercel deployment:
+- `/` - Home page with featured artwork
+- `/portfolio` - Artwork gallery with filtering
+- `/commissions` - Commission request form
+- `/shop` - E-commerce shop (connects to Medusa)
+- `/about` - Artist bio and information
+- `/contact` - Contact form
 
-1. Connect your GitHub repository to Vercel
-2. Vercel will auto-detect Nuxt 3 and use the `vercel.json` configuration
-3. Set environment variables (if needed):
-   - `SITE_URL`: Your production domain
-   - `MEDUSA_BACKEND_URL`: Medusa backend URL (when ready)
-   - `MEDUSA_API_KEY`: Medusa API key (when ready)
+## SEO Configuration
 
-## 📄 Pages
+The site is configured with:
+- Meta tags for all pages
+- OpenGraph and Twitter Card support
+- Automatic sitemap generation
+- robots.txt configuration
+- Structured data markup ready
 
-- **Home** (`/`): Hero section with featured artwork
-- **Portfolio** (`/portfolio`): Bento box gallery of all artwork
-- **About** (`/about`): Artist biography and statement
-- **Commissions** (`/commissions`): Commission inquiry form and process
-- **Shop** (`/shop`): E-commerce integration (Medusa)
-- **Contact** (`/contact`): Contact form and information
+## Medusa Integration
 
-## 🎯 Features
+The website is ready to connect to a Medusa backend. The Medusa backend should be built separately.
 
-- ✅ Server-side rendering for SEO
-- ✅ Local SEO optimization (Paris/Lexington, KY)
-- ✅ Responsive design (mobile-first)
-- ✅ Image optimization (WebP/AVIF)
-- ✅ Bento box portfolio layout
-- ✅ Commission inquiry system
-- ✅ Medusa.js e-commerce integration (ready)
-- ✅ Structured data (Schema.org)
-- ✅ Sitemap generation
-- ✅ Drawbridge visual task management
+### Setup Medusa Backend
 
-## 📝 Artist Info
+1. Create a separate folder for the Medusa backend
+2. Initialize Medusa
+3. Configure products and inventory
+4. Set up payment providers (Stripe, etc.)
+5. Get the backend URL and API key
+6. Update `.env` with the Medusa credentials
 
-**Robert Gaunce**
-- Location: Paris, Kentucky
-- Medium: Watercolor (line and wash technique)
-- Specialties: Nature, Wildlife, Portrait Commissions
-- Education: Bachelor of Arts in Art Area, Morehead State University (2013-2017)
+### Cart & Checkout
 
-## 🔗 Links
+The cart functionality is implemented in `stores/cart.ts` and will connect to Medusa once the backend is ready.
 
-- GitHub: [https://github.com/MarketLou/Robert-Gaunce-Art](https://github.com/MarketLou/Robert-Gaunce-Art)
+## Deployment
 
-## 📧 Contact
+### Vercel
 
-For inquiries about artwork or commissions, please visit the website contact page.
+1. Push to GitHub
+2. Connect repository to Vercel
+3. Configure environment variables in Vercel dashboard
+4. Deploy automatically on push
 
----
+### Environment Variables
 
-Built with ❤️ using Nuxt 3
+Set these in your deployment platform:
+- `SITE_URL` - Your domain URL
+- `MEDUSA_BACKEND_URL` - Medusa backend URL
+- `MEDUSA_API_KEY` - Medusa publishable API key
 
+## Next Steps
+
+1. Build the Medusa backend in a separate folder
+2. Add real artwork images
+3. Configure email service for contact forms
+4. Set up payment processing
+5. Add analytics (Google Analytics 4)
+6. Optimize images and performance
+
+## Author
+
+Robert Gaunce - Watercolor Artist  
+Paris, Kentucky

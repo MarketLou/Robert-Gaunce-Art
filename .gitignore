@@ -1,36 +1,30 @@
-# Nuxt
-website/.nuxt
-website/.output
-website/dist
-website/.env
-website/.env.*
-!website/.env.example
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
 
-# Dependencies
-website/node_modules
+# Node dependencies
 node_modules
 
 # Logs
+logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# OS
+# Misc
 .DS_Store
-Thumbs.db
-
-# IDE
-.vscode
+.fleet
 .idea
-*.swp
-*.swo
-*~
 
-# Vercel
-.vercel
+# Local env files
+.env
+.env.*
+!.env.example
 
-# Drawbridge
-.moat/*.png
-.moat/screenshots/
+# Moat task system
+.moat/
 
+# Claude Code configuration
+.claude/
