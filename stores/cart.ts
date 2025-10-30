@@ -4,7 +4,8 @@ export const useCartStore = defineStore('cart', {
   state: () => ({
     cartId: null as string | null,
     cart: null as any,
-    isLoading: false
+    isLoading: false,
+    isOpen: false
   }),
 
   getters: {
@@ -13,19 +14,35 @@ export const useCartStore = defineStore('cart', {
     },
     total: (state) => {
       return state.cart?.total || 0
+    },
+    items: (state) => {
+      return state.cart?.items || []
     }
   },
 
   actions: {
+    toggleCart() {
+      this.isOpen = !this.isOpen
+    },
+
     async initializeCart() {
       // Check localStorage for existing cart
       const savedCartId = localStorage.getItem('cart_id')
       
       if (savedCartId) {
         try {
-          // Validate cart with backend
-          // TODO: Connect to Medusa backend
-          this.cartId = savedCartId
+          // Retrieve existing cart from Medusa
+          const { $medusa } = useNuxtApp()
+          const response = await $medusa.store.cart.retrieve(savedCartId)
+          
+          if (response.cart) {
+            this.cartId = savedCartId
+            this.cart = response.cart
+          } else {
+            // Cart not found, create new one
+            localStorage.removeItem('cart_id')
+            await this.createCart()
+          }
         } catch (error) {
           console.error('Invalid cart, creating new one', error)
           localStorage.removeItem('cart_id')
@@ -39,11 +56,16 @@ export const useCartStore = defineStore('cart', {
     async createCart() {
       this.isLoading = true
       try {
-        // TODO: Connect to Medusa backend to create cart
-        // const { $medusa } = useNuxtApp()
-        // const result = await $medusa.store.cart.create({...})
-        // this.cartId = result.cart.id
-        // localStorage.setItem('cart_id', this.cartId)
+        const { $medusa } = useNuxtApp()
+        const response = await $medusa.store.cart.create({
+          region_id: undefined, // Will use default region
+        })
+        
+        if (response.cart) {
+          this.cartId = response.cart.id
+          this.cart = response.cart
+          localStorage.setItem('cart_id', this.cartId)
+        }
       } catch (error) {
         console.error('Failed to create cart', error)
       } finally {
@@ -58,15 +80,18 @@ export const useCartStore = defineStore('cart', {
 
       this.isLoading = true
       try {
-        // TODO: Connect to Medusa backend
-        // const { $medusa } = useNuxtApp()
-        // const result = await $medusa.store.cart.lineItems.create(this.cartId, {
-        //   variant_id: variantId,
-        //   quantity
-        // })
-        // this.cart = result.cart
+        const { $medusa } = useNuxtApp()
+        const response = await $medusa.store.cart.lineItems.create(this.cartId, {
+          variant_id: variantId,
+          quantity
+        })
+        
+        if (response.cart) {
+          this.cart = response.cart
+        }
       } catch (error) {
         console.error('Failed to add item to cart', error)
+        throw error
       } finally {
         this.isLoading = false
       }
@@ -77,12 +102,15 @@ export const useCartStore = defineStore('cart', {
 
       this.isLoading = true
       try {
-        // TODO: Connect to Medusa backend
-        // const { $medusa } = useNuxtApp()
-        // const result = await $medusa.store.cart.lineItems.delete(this.cartId, itemId)
-        // this.cart = result.cart
+        const { $medusa } = useNuxtApp()
+        const response = await $medusa.store.cart.lineItems.delete(this.cartId, itemId)
+        
+        if (response.cart) {
+          this.cart = response.cart
+        }
       } catch (error) {
         console.error('Failed to remove item from cart', error)
+        throw error
       } finally {
         this.isLoading = false
       }
@@ -93,14 +121,17 @@ export const useCartStore = defineStore('cart', {
 
       this.isLoading = true
       try {
-        // TODO: Connect to Medusa backend
-        // const { $medusa } = useNuxtApp()
-        // const result = await $medusa.store.cart.lineItems.update(this.cartId, itemId, {
-        //   quantity
-        // })
-        // this.cart = result.cart
+        const { $medusa } = useNuxtApp()
+        const response = await $medusa.store.cart.lineItems.update(this.cartId, itemId, {
+          quantity
+        })
+        
+        if (response.cart) {
+          this.cart = response.cart
+        }
       } catch (error) {
         console.error('Failed to update quantity', error)
+        throw error
       } finally {
         this.isLoading = false
       }

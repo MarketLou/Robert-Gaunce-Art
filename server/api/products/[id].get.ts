@@ -6,7 +6,7 @@
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
-  const backendUrl = config.public.medusaBackendUrl
+  let backendUrl = config.public.medusaBackendUrl
   const apiKey = config.public.medusaPublishableKey
 
   // Get the product ID from the URL parameter
@@ -32,6 +32,9 @@ export default defineEventHandler(async (event) => {
       message: 'Medusa publishable API key is not configured'
     })
   }
+
+  // Remove trailing slash from backend URL if present
+  backendUrl = backendUrl.replace(/\/$/, '')
 
   try {
     // Fetch single product from Medusa Store API

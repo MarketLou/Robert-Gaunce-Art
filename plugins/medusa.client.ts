@@ -3,10 +3,14 @@ import Medusa from '@medusajs/js-sdk'
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
   
-  // Initialize Medusa SDK
-  // Backend URL will be provided via environment variable
+  // Remove trailing slash from backend URL if present
+  let backendUrl = config.public.medusaBackendUrl || ''
+  backendUrl = backendUrl.replace(/\/$/, '')
+  
+  // Initialize Medusa SDK with publishable key
   const medusa = new Medusa({
-    baseUrl: config.public.medusaBackendUrl || ''
+    baseUrl: backendUrl,
+    publishableKey: config.public.medusaPublishableKey || ''
   })
 
   return {
