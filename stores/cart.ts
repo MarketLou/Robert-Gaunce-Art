@@ -98,6 +98,12 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
+        console.log('🛒 [CART STORE] Cart object:', $medusa.store.cart)
+        console.log('🛒 [CART STORE] Cart object keys:', Object.keys($medusa.store.cart))
+        console.log('🛒 [CART STORE] Has lineItems?', !!$medusa.store.cart.lineItems)
+        if ($medusa.store.cart.lineItems) {
+          console.log('🛒 [CART STORE] lineItems keys:', Object.keys($medusa.store.cart.lineItems))
+        }
         console.log('🛒 [CART STORE] Calling store.cart.lineItems.create()', this.cartId)
         const response = await $medusa.store.cart.lineItems.create(this.cartId, {
           variant_id: variantId,
