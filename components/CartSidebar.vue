@@ -215,7 +215,7 @@ const handleCheckout = () => {
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  justify-center;
+  justify-content: center;
   color: #6b7280;
   transition: color 0.2s;
 }
