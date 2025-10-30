@@ -49,8 +49,8 @@
           <!-- Product Image -->
           <div class="aspect-square bg-muted overflow-hidden">
             <img 
-              v-if="product.thumbnail"
-              :src="product.thumbnail" 
+              v-if="product.thumbnail || product.images?.[0]?.url"
+              :src="product.thumbnail || product.images?.[0]?.url" 
               :alt="product.title"
               class="w-full h-full object-cover"
             />
