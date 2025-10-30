@@ -37,7 +37,7 @@ export const useCartStore = defineStore('cart', {
           // Retrieve existing cart from Medusa
           const { $medusa } = useNuxtApp()
           console.log('🛒 [CART STORE] Retrieving existing cart...')
-          const response = await $medusa.carts.retrieve(savedCartId)
+          const response = await $medusa.store.cart.retrieve(savedCartId)
           
           if (response.cart) {
             console.log('✅ [CART STORE] Cart retrieved successfully')
@@ -65,8 +65,8 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        console.log('🛒 [CART STORE] Calling Medusa carts.create()')
-        const response = await $medusa.carts.create({
+        console.log('🛒 [CART STORE] Calling Medusa store.cart.create()')
+        const response = await $medusa.store.cart.create({
           region_id: undefined, // Will use default region
         })
         
@@ -98,8 +98,8 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        console.log('🛒 [CART STORE] Calling carts.lineItems.create()', this.cartId)
-        const response = await $medusa.carts.lineItems.create(this.cartId, {
+        console.log('🛒 [CART STORE] Calling store.cart.lineItems.create()', this.cartId)
+        const response = await $medusa.store.cart.lineItems.create(this.cartId, {
           variant_id: variantId,
           quantity
         })
@@ -125,7 +125,7 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        const response = await $medusa.carts.lineItems.delete(this.cartId, itemId)
+        const response = await $medusa.store.cart.lineItems.delete(this.cartId, itemId)
         
         if (response.cart) {
           this.cart = response.cart
@@ -144,7 +144,7 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        const response = await $medusa.carts.lineItems.update(this.cartId, itemId, {
+        const response = await $medusa.store.cart.lineItems.update(this.cartId, itemId, {
           quantity
         })
         

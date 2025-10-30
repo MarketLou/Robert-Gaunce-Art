@@ -28,6 +28,10 @@ export default defineNuxtPlugin(() => {
   // Check nested properties
   if (medusa.store) {
     console.log('🔍 store properties:', Object.keys(medusa.store))
+    console.log('🔍 Has store.cart?', !!medusa.store.cart)
+    if (medusa.store.cart) {
+      console.log('🔍 store.cart properties:', Object.keys(medusa.store.cart))
+    }
   }
 
   return {
