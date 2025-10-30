@@ -57,6 +57,14 @@ export default defineEventHandler(async (event) => {
     console.log('✅ [SERVER API] Products received:', data.products?.length || 0)
     console.log('📦 [SERVER API] Product data:', JSON.stringify(data.products, null, 2))
     
+    // Check image URLs specifically
+    if (data.products?.length > 0) {
+      data.products.forEach((product: any, index: number) => {
+        console.log(`🖼️ [SERVER API] Product ${index + 1} thumbnail:`, product.thumbnail)
+        console.log(`🖼️ [SERVER API] Product ${index + 1} images:`, product.images)
+      })
+    }
+    
     return {
       products: data.products || [],
       count: data.count || 0

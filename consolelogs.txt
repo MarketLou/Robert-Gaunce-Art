@@ -1,0 +1,48 @@
+shop:1 Mixed Content: The page at 'https://www.robertgaunceart.com/shop' was loaded over HTTPS, but requested an insecure element 'http://localhost:9000/static/1761857105836-Hero.jpg'. This request was automatically upgraded to HTTPS, For more information see https://blog.chromium.org/2019/10/no-more-mixed-messages-about-https.html
+shop:1 Mixed Content: The page at 'https://www.robertgaunceart.com/shop' was loaded over HTTPS, but requested an insecure element 'http://localhost:9000/static/1761857105836-Hero.jpg'. This request was automatically upgraded to HTTPS, For more information see https://blog.chromium.org/2019/10/no-more-mixed-messages-about-https.html
+DDdUcVp6.js:45 🔧 Medusa Plugin Initialized
+DDdUcVp6.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
+DDdUcVp6.js:45 🔑 Publishable Key: ✅ Set
+DzO_CBfu.js:1 🟦 [SHOP PAGE] Initializing shop page
+DzO_CBfu.js:1 🔶 [COMPOSABLE] useProducts called
+DzO_CBfu.js:1 📊 [COMPOSABLE] Returning products: 0
+DDdUcVp6.js:14 Hydration completed but contains mismatches.
+Vn @ DDdUcVp6.js:14
+DzO_CBfu.js:1 ⏳ [COMPOSABLE] Pending status: true
+DzO_CBfu.js:1 🛍️ [SHOP PAGE] Loading state: true
+DzO_CBfu.js:1 🛒 [CART STORE] Initializing cart...
+DzO_CBfu.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VFWJMCEVQ2A4E84KXEZE6P
+DzO_CBfu.js:1 🛒 [CART STORE] Retrieving existing cart...
+DzO_CBfu.js:1 🔄 [COMPOSABLE] Transforming response: Object
+DzO_CBfu.js:1 🔄 [COMPOSABLE] Products count: 1
+DzO_CBfu.js:1 👀 [COMPOSABLE] Data changed: Object
+DzO_CBfu.js:1 👀 [COMPOSABLE] Products in data: 1
+DzO_CBfu.js:1 📊 [COMPOSABLE] Returning products: 1
+DzO_CBfu.js:1 🛍️ [SHOP PAGE] Products updated: 1
+DzO_CBfu.js:1 🛍️ [SHOP PAGE] Products data: Array(1)
+DzO_CBfu.js:1 ⏳ [COMPOSABLE] Pending status: false
+DzO_CBfu.js:1 🛍️ [SHOP PAGE] Loading state: false
+DDdUcVp6.js:19 Mixed Content: The page at 'https://www.robertgaunceart.com/shop' was loaded over HTTPS, but requested an insecure element 'http://localhost:9000/static/1761857105836-Hero.jpg'. This request was automatically upgraded to HTTPS, For more information see https://blog.chromium.org/2019/10/no-more-mixed-messages-about-https.html
+Jc @ DDdUcVp6.js:19
+DzO_CBfu.js:1 ✅ [CART STORE] Cart retrieved successfully
+1761857105836-Hero.jpg:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+DzO_CBfu.js:1 🛒 [CART STORE] Adding item to cart: Object
+DzO_CBfu.js:1 🛒 [CART STORE] Calling lineItems.create() cart_01K8VFWJMCEVQ2A4E84KXEZE6P
+DzO_CBfu.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.addItem (DzO_CBfu.js:1:16520)
+    at Proxy.$ (DDdUcVp6.js:23:2323)
+    at n (DzO_CBfu.js:1:24178)
+    at onClick (DzO_CBfu.js:1:26120)
+    at si (DDdUcVp6.js:14:38)
+    at Ot (DDdUcVp6.js:14:109)
+    at HTMLButtonElement.n (DDdUcVp6.js:19:7246)
+addItem @ DzO_CBfu.js:1
+DzO_CBfu.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.addItem (DzO_CBfu.js:1:16520)
+    at Proxy.$ (DDdUcVp6.js:23:2323)
+    at n (DzO_CBfu.js:1:24178)
+    at onClick (DzO_CBfu.js:1:26120)
+    at si (DDdUcVp6.js:14:38)
+    at Ot (DDdUcVp6.js:14:109)
+    at HTMLButtonElement.n (DDdUcVp6.js:19:7246)
+n @ DzO_CBfu.js:1

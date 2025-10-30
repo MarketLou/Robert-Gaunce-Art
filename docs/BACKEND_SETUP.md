@@ -8,13 +8,21 @@ This document outlines what needs to be configured on the **Medusa Backend** (Ra
 1. ✅ **Added USD currency** - Set as default currency
 2. ✅ **Removed EURO currency** - Cleaned up unused currency
 3. ✅ **Created Region** - Set up region for cart functionality
+4. ✅ **Environment Variables Configured on Vercel** - Backend URL and Publishable Key set
+5. ✅ **Cart functionality working** - Cart creation successful
 
 ### ⏳ Steps In Progress:
-- [ ] Create test products with images
+- [x] Create test products with images (Product added to Medusa)
+- [ ] Fix products API endpoint (500 error - investigating)
 - [ ] Configure payment provider (Stripe)
 - [ ] Set up shipping options
 - [ ] Configure tax rates
-- [ ] Upload product images
+
+### 🐛 Current Issues:
+- **✅ IDENTIFIED: Publishable key needs sales channel configured**
+  - Error: `"Publishable key needs to have a sales channel configured"`
+  - Fix: Backend must link the publishable key to a sales channel in Medusa Admin
+  - Location: Settings → Publishable API Keys → Edit → Link to Sales Channel
 
 ### 📝 Notes:
 - Backend URL: `https://robert-gaunce-art-medusa-production.up.railway.app`
@@ -34,13 +42,22 @@ We've successfully created server-side API routes that will communicate with you
 
 ## 🎯 Backend Setup Checklist
 
-### 1. **✅ DONE - Create and Provide Publishable API Key**
+### 1. **⚠️ PARTIALLY DONE - Create and Configure Publishable API Key**
 
-✅ **Status: COMPLETED**
+⚠️ **Status: NEEDS SALES CHANNEL CONFIGURATION**
 
-Publishable API key has been created and configured:
+Publishable API key exists but needs configuration:
 - Key: `pk_495a905d39e83ee4957af90c6605fda76d4d07412c152a22ff12408afe1cf195`
 - Frontend is configured with this key
+- **❌ Missing: Sales Channel association**
+  
+**Required Action:**
+1. Log into Medusa Admin
+2. Settings → Publishable API Keys
+3. Edit the key
+4. Link to "Default Sales Channel" (or create one)
+5. Ensure products are published to the same channel
+6. Save changes
 
 ### 2. **✅ DONE - Region Configuration**
 
