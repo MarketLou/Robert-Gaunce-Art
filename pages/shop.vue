@@ -32,26 +32,67 @@
       </button>
     </div>
 
+    <!-- Loading State -->
+    <div v-if="pending" class="text-center py-12">
+      <p class="text-muted-foreground">Loading artwork...</p>
+    </div>
+
+    <!-- Error State -->
+    <div v-else-if="error" class="text-center py-12">
+      <p class="text-red-500 mb-4">Unable to load products at this time.</p>
+      <button 
+        @click="refresh()"
+        class="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+      >
+        Try Again
+      </button>
+    </div>
+
     <!-- Product Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Placeholder product cards -->
+    <div v-else-if="filteredProducts.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div 
-        v-for="i in 6" 
-        :key="i"
+        v-for="product in filteredProducts" 
+        :key="product.id"
         class="bg-card rounded-lg overflow-hidden border hover:shadow-lg transition-shadow"
       >
-        <div class="aspect-square bg-muted"></div>
+        <!-- Product Image -->
+        <div class="aspect-square bg-muted overflow-hidden">
+          <img 
+            v-if="product.thumbnail"
+            :src="product.thumbnail" 
+            :alt="product.title"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        
+        <!-- Product Info -->
         <div class="p-4">
-          <h3 class="font-semibold mb-1">Original Artwork {{ i }}</h3>
-          <p class="text-sm text-muted-foreground mb-2">Watercolor on paper</p>
-          <p class="text-2xl font-bold mb-4">${{ (200 + i * 100).toLocaleString() }}</p>
+          <h3 class="font-semibold mb-1">{{ product.title }}</h3>
+          <p class="text-sm text-muted-foreground mb-2 line-clamp-2">
+            {{ product.description || 'Watercolor artwork' }}
+          </p>
+          
+          <!-- Price -->
+          <p v-if="product.variants && product.variants.length > 0" class="text-2xl font-bold mb-4">
+            {{ formatPrice(product.variants[0]) }}
+          </p>
+          <p v-else class="text-2xl font-bold mb-4">Contact for Price</p>
+          
+          <!-- Add to Cart Button -->
           <button 
+            @click="addToCart(product)"
             class="w-full rounded-md bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
           >
             Add to Cart
           </button>
         </div>
       </div>
+    </div>
+
+    <!-- Empty State -->
+    <div v-else class="text-center py-12">
+      <p class="text-muted-foreground mb-4">No products available in this category yet.</p>
+      <p class="text-sm text-muted-foreground">Check back soon or request a custom commission!</p>
     </div>
 
     <!-- Info Section -->
@@ -82,9 +123,50 @@ useSeoMeta({
   ogDescription: 'Browse original watercolor artwork and prints available for purchase.',
 })
 
+// Fetch products from Medusa backend
+const { products, pending, error, refresh } = useProducts()
+
+// Filter state
 const selectedType = ref('original')
 
-// TODO: Integrate with Medusa backend to fetch products
-// For now, showing placeholder products
+// Filtered products based on selected type
+// For now showing all products - can enhance filtering with collections/metadata later
+const filteredProducts = computed(() => {
+  if (selectedType.value === 'commission') {
+    // Redirect to commissions page
+    return []
+  }
+  
+  // TODO: Filter by collection or product metadata when backend has categorized products
+  // For now, show all products
+  return products.value
+})
+
+// Format price helper
+const formatPrice = (variant: any) => {
+  if (!variant || !variant.prices || variant.prices.length === 0) {
+    return 'Contact for Price'
+  }
+  
+  const price = variant.prices[0]
+  const amount = price.amount / 100 // Convert from cents to dollars
+  const currency = price.currency_code?.toUpperCase() || 'USD'
+  
+  return `$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+}
+
+// Add to cart function (placeholder for now - will wire up in Step 3)
+const addToCart = (product: any) => {
+  console.log('Add to cart:', product)
+  // TODO: Implement cart functionality in Step 3
+  alert(`"${product.title}" will be added to cart (cart functionality coming in Step 3)`)
+}
+
+// Redirect to commissions page when commission filter is selected
+watch(selectedType, (newType) => {
+  if (newType === 'commission') {
+    navigateTo('/commissions')
+  }
+})
 </script>
 

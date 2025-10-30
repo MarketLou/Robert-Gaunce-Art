@@ -64,7 +64,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       medusaBackendUrl: process.env.MEDUSA_BACKEND_URL || '',
-      medusaApiKey: process.env.MEDUSA_API_KEY || '',
+      medusaPublishableKey: process.env.MEDUSA_PUBLISHABLE_KEY || '',
     }
   },
 
