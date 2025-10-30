@@ -1,164 +1,439 @@
--ps5VBj5.js:45 🔧 Medusa Plugin Initialized
--ps5VBj5.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
--ps5VBj5.js:45 🔑 Publishable Key: ✅ Set
-BTPxmzll.js:1 🟦 [SHOP PAGE] Initializing shop page
-BTPxmzll.js:1 🔶 [COMPOSABLE] useProducts called
-BTPxmzll.js:1 📊 [COMPOSABLE] Returning products: 0
--ps5VBj5.js:14 Hydration completed but contains mismatches.
-Vn @ -ps5VBj5.js:14
-_ @ -ps5VBj5.js:15
-$ @ -ps5VBj5.js:14
-f @ -ps5VBj5.js:14
-d @ -ps5VBj5.js:15
-h @ -ps5VBj5.js:14
-f @ -ps5VBj5.js:14
-d @ -ps5VBj5.js:15
-h @ -ps5VBj5.js:14
-f @ -ps5VBj5.js:14
-d @ -ps5VBj5.js:15
-h @ -ps5VBj5.js:14
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-wm @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-d @ -ps5VBj5.js:15
-m @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-d @ -ps5VBj5.js:15
-h @ -ps5VBj5.js:14
-f @ -ps5VBj5.js:14
-d @ -ps5VBj5.js:15
-h @ -ps5VBj5.js:14
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-g @ -ps5VBj5.js:15
-__asyncHydrate @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-(anonymous) @ -ps5VBj5.js:15
+orsOLZAh.js:45 🔧 Medusa Plugin Initialized
+orsOLZAh.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
+orsOLZAh.js:45 🔑 Publishable Key: ✅ Set
+Ccw-dVso.js:1 🟦 [SHOP PAGE] Initializing shop page
+Ccw-dVso.js:1 🔶 [COMPOSABLE] useProducts called
+Ccw-dVso.js:1 📊 [COMPOSABLE] Returning products: 0
+orsOLZAh.js:14 Hydration completed but contains mismatches.
+Vn @ orsOLZAh.js:14
+_ @ orsOLZAh.js:15
+$ @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+m @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+g @ orsOLZAh.js:15
+__asyncHydrate @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+(anonymous) @ orsOLZAh.js:15
 Promise.then
-registerDep @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-wm @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-wm @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-tt @ -ps5VBj5.js:15
-q @ -ps5VBj5.js:15
-run @ -ps5VBj5.js:10
-G @ -ps5VBj5.js:15
-Q @ -ps5VBj5.js:15
-f @ -ps5VBj5.js:14
-a @ -ps5VBj5.js:14
-mount @ -ps5VBj5.js:15
-t.mount @ -ps5VBj5.js:19
-qu @ -ps5VBj5.js:47
+registerDep @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+a @ orsOLZAh.js:14
+mount @ orsOLZAh.js:15
+t.mount @ orsOLZAh.js:19
+qu @ orsOLZAh.js:47
 await in qu
-(anonymous) @ -ps5VBj5.js:47
-BTPxmzll.js:1 ⏳ [COMPOSABLE] Pending status: true
-BTPxmzll.js:1 🛍️ [SHOP PAGE] Loading state: true
-BTPxmzll.js:1 🛒 [CART STORE] Initializing cart...
-BTPxmzll.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VFWJMCEVQ2A4E84KXEZE6P
-BTPxmzll.js:1 🛒 [CART STORE] Retrieving existing cart...
-BTPxmzll.js:1 🔄 [COMPOSABLE] Transforming response: {products: Array(1), count: 1}
-BTPxmzll.js:1 🔄 [COMPOSABLE] Products count: 1
-BTPxmzll.js:1 👀 [COMPOSABLE] Data changed: {products: Array(1), count: 1}
-BTPxmzll.js:1 👀 [COMPOSABLE] Products in data: 1
-BTPxmzll.js:1 📊 [COMPOSABLE] Returning products: 1
-BTPxmzll.js:1 🛍️ [SHOP PAGE] Products updated: 1
-BTPxmzll.js:1 🛍️ [SHOP PAGE] Products data: [{…}]
-BTPxmzll.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
-BTPxmzll.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
-BTPxmzll.js:1 🖼️ [SHOP PAGE] - Images: [{…}]
-BTPxmzll.js:1 🖼️ [SHOP PAGE] - Full product: {id: 'prod_01K8VH27686FDD4M96XY8P7J7C', title: 'test', subtitle: '', description: 'watercolor', handle: 'test', …}
-BTPxmzll.js:1 ⏳ [COMPOSABLE] Pending status: false
-BTPxmzll.js:1 🛍️ [SHOP PAGE] Loading state: false
-BTPxmzll.js:1 ✅ [CART STORE] Cart retrieved successfully
-BTPxmzll.js:1 🛒 [CART STORE] Adding item to cart: {variantId: 'variant_01K8VH278B7EY9A0R82HYSQFZY', quantity: 1}
-BTPxmzll.js:1 🛒 [CART STORE] Calling lineItems.create() cart_01K8VFWJMCEVQ2A4E84KXEZE6P
-BTPxmzll.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.addItem (BTPxmzll.js:1:16520)
-    at Proxy.$ (-ps5VBj5.js:23:2323)
-    at n (BTPxmzll.js:1:24426)
-    at onClick (BTPxmzll.js:1:26368)
-    at si (-ps5VBj5.js:14:38)
-    at Ot (-ps5VBj5.js:14:109)
-    at HTMLButtonElement.n (-ps5VBj5.js:19:7246)
-addItem @ BTPxmzll.js:1
-$ @ -ps5VBj5.js:23
-n @ BTPxmzll.js:1
-onClick @ BTPxmzll.js:1
-si @ -ps5VBj5.js:14
-Ot @ -ps5VBj5.js:14
-n @ -ps5VBj5.js:19
-BTPxmzll.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.addItem (BTPxmzll.js:1:16520)
-    at Proxy.$ (-ps5VBj5.js:23:2323)
-    at n (BTPxmzll.js:1:24426)
-    at onClick (BTPxmzll.js:1:26368)
-    at si (-ps5VBj5.js:14:38)
-    at Ot (-ps5VBj5.js:14:109)
-    at HTMLButtonElement.n (-ps5VBj5.js:19:7246)
-n @ BTPxmzll.js:1
+(anonymous) @ orsOLZAh.js:47
+Ccw-dVso.js:1 ⏳ [COMPOSABLE] Pending status: true
+Ccw-dVso.js:1 🛍️ [SHOP PAGE] Loading state: true
+Ccw-dVso.js:1 🛒 [CART STORE] Initializing cart...
+Ccw-dVso.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VFWJMCEVQ2A4E84KXEZE6P
+Ccw-dVso.js:1 🛒 [CART STORE] Retrieving existing cart...
+Ccw-dVso.js:1 ❌ [CART STORE] Invalid cart, creating new one: TypeError: Cannot read properties of undefined (reading 'retrieve')
+    at Proxy.initializeCart (Ccw-dVso.js:1:15093)
+    at Proxy.$ (orsOLZAh.js:23:2323)
+    at Ccw-dVso.js:1:24589
+    at orsOLZAh.js:15:6550
+    at si (orsOLZAh.js:14:38)
+    at Ot (orsOLZAh.js:14:109)
+    at t.__weh.t.__weh (orsOLZAh.js:15:6430)
+    at Ni (orsOLZAh.js:14:1619)
+    at bf (orsOLZAh.js:14:1928)
+initializeCart @ Ccw-dVso.js:1
+$ @ orsOLZAh.js:23
+(anonymous) @ Ccw-dVso.js:1
+(anonymous) @ orsOLZAh.js:15
+si @ orsOLZAh.js:14
+Ot @ orsOLZAh.js:14
+t.__weh.t.__weh @ orsOLZAh.js:15
+Ni @ orsOLZAh.js:14
+bf @ orsOLZAh.js:14
+Promise.then
+wf @ orsOLZAh.js:14
+Da @ orsOLZAh.js:14
+Ba.c.scheduler @ orsOLZAh.js:15
+Ep.a.scheduler @ orsOLZAh.js:10
+trigger @ orsOLZAh.js:10
+$a @ orsOLZAh.js:10
+notify @ orsOLZAh.js:10
+trigger @ orsOLZAh.js:10
+set value @ orsOLZAh.js:10
+execute @ Ccw-dVso.js:1
+(anonymous) @ Ccw-dVso.js:1
+(anonymous) @ Ccw-dVso.js:1
+(anonymous) @ Ccw-dVso.js:1
+(anonymous) @ orsOLZAh.js:15
+si @ orsOLZAh.js:14
+Ot @ orsOLZAh.js:14
+t.__weh.t.__weh @ orsOLZAh.js:15
+ir @ orsOLZAh.js:6
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+m @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+g @ orsOLZAh.js:15
+__asyncHydrate @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+(anonymous) @ orsOLZAh.js:15
+Promise.then
+registerDep @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+a @ orsOLZAh.js:14
+mount @ orsOLZAh.js:15
+t.mount @ orsOLZAh.js:19
+qu @ orsOLZAh.js:47
+await in qu
+(anonymous) @ orsOLZAh.js:47
+Ccw-dVso.js:1 🛒 [CART STORE] Creating new cart...
+Ccw-dVso.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+Ccw-dVso.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (Ccw-dVso.js:1:15753)
+    at Proxy.$ (orsOLZAh.js:23:2323)
+    at Proxy.initializeCart (Ccw-dVso.js:1:15449)
+    at Proxy.$ (orsOLZAh.js:23:2323)
+    at Ccw-dVso.js:1:24589
+    at orsOLZAh.js:15:6550
+    at si (orsOLZAh.js:14:38)
+    at Ot (orsOLZAh.js:14:109)
+    at t.__weh.t.__weh (orsOLZAh.js:15:6430)
+    at Ni (orsOLZAh.js:14:1619)
+createCart @ Ccw-dVso.js:1
+$ @ orsOLZAh.js:23
+initializeCart @ Ccw-dVso.js:1
+$ @ orsOLZAh.js:23
+(anonymous) @ Ccw-dVso.js:1
+(anonymous) @ orsOLZAh.js:15
+si @ orsOLZAh.js:14
+Ot @ orsOLZAh.js:14
+t.__weh.t.__weh @ orsOLZAh.js:15
+Ni @ orsOLZAh.js:14
+bf @ orsOLZAh.js:14
+Promise.then
+wf @ orsOLZAh.js:14
+Da @ orsOLZAh.js:14
+Ba.c.scheduler @ orsOLZAh.js:15
+Ep.a.scheduler @ orsOLZAh.js:10
+trigger @ orsOLZAh.js:10
+$a @ orsOLZAh.js:10
+notify @ orsOLZAh.js:10
+trigger @ orsOLZAh.js:10
+set value @ orsOLZAh.js:10
+execute @ Ccw-dVso.js:1
+(anonymous) @ Ccw-dVso.js:1
+(anonymous) @ Ccw-dVso.js:1
+(anonymous) @ Ccw-dVso.js:1
+(anonymous) @ orsOLZAh.js:15
+si @ orsOLZAh.js:14
+Ot @ orsOLZAh.js:14
+t.__weh.t.__weh @ orsOLZAh.js:15
+ir @ orsOLZAh.js:6
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+m @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+d @ orsOLZAh.js:15
+h @ orsOLZAh.js:14
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+g @ orsOLZAh.js:15
+__asyncHydrate @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+(anonymous) @ orsOLZAh.js:15
+Promise.then
+registerDep @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+wm @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+tt @ orsOLZAh.js:15
+q @ orsOLZAh.js:15
+run @ orsOLZAh.js:10
+G @ orsOLZAh.js:15
+Q @ orsOLZAh.js:15
+f @ orsOLZAh.js:14
+a @ orsOLZAh.js:14
+mount @ orsOLZAh.js:15
+t.mount @ orsOLZAh.js:19
+qu @ orsOLZAh.js:47
+await in qu
+(anonymous) @ orsOLZAh.js:47
+Ccw-dVso.js:1 🔄 [COMPOSABLE] Transforming response: {products: Array(1), count: 1}
+Ccw-dVso.js:1 🔄 [COMPOSABLE] Products count: 1
+Ccw-dVso.js:1 👀 [COMPOSABLE] Data changed: {products: Array(1), count: 1}
+Ccw-dVso.js:1 👀 [COMPOSABLE] Products in data: 1
+Ccw-dVso.js:1 📊 [COMPOSABLE] Returning products: 1
+Ccw-dVso.js:1 🛍️ [SHOP PAGE] Products updated: 1
+Ccw-dVso.js:1 🛍️ [SHOP PAGE] Products data: [{…}]
+Ccw-dVso.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
+Ccw-dVso.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
+Ccw-dVso.js:1 🖼️ [SHOP PAGE] - Images: [{…}]
+Ccw-dVso.js:1 🖼️ [SHOP PAGE] - Full product: {id: 'prod_01K8VH27686FDD4M96XY8P7J7C', title: 'test', subtitle: '', description: 'watercolor', handle: 'test', …}
+Ccw-dVso.js:1 ⏳ [COMPOSABLE] Pending status: false
+Ccw-dVso.js:1 🛍️ [SHOP PAGE] Loading state: false
+Ccw-dVso.js:1 🛒 [CART STORE] Toggle cart: true
+Ccw-dVso.js:1 🛒 [CART STORE] Toggle cart: false
+Ccw-dVso.js:1 🛒 [CART STORE] Adding item to cart: {variantId: 'variant_01K8VH278B7EY9A0R82HYSQFZY', quantity: 1}
+Ccw-dVso.js:1 🛒 [CART STORE] No cart ID, creating cart first
+Ccw-dVso.js:1 🛒 [CART STORE] Creating new cart...
+Ccw-dVso.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+Ccw-dVso.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (Ccw-dVso.js:1:15753)
+    at Proxy.$ (orsOLZAh.js:23:2323)
+    at Proxy.addItem (Ccw-dVso.js:1:16347)
+    at Proxy.$ (orsOLZAh.js:23:2323)
+    at n (Ccw-dVso.js:1:24408)
+    at onClick (Ccw-dVso.js:1:26390)
+    at si (orsOLZAh.js:14:38)
+    at Ot (orsOLZAh.js:14:109)
+    at HTMLButtonElement.n (orsOLZAh.js:19:7246)
+createCart @ Ccw-dVso.js:1
+$ @ orsOLZAh.js:23
+addItem @ Ccw-dVso.js:1
+$ @ orsOLZAh.js:23
+n @ Ccw-dVso.js:1
+onClick @ Ccw-dVso.js:1
+si @ orsOLZAh.js:14
+Ot @ orsOLZAh.js:14
+n @ orsOLZAh.js:19
+Ccw-dVso.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
+Ccw-dVso.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (Ccw-dVso.js:1:16502)
+    at async n (Ccw-dVso.js:1:24400)
+addItem @ Ccw-dVso.js:1
+await in addItem
+$ @ orsOLZAh.js:23
+n @ Ccw-dVso.js:1
+onClick @ Ccw-dVso.js:1
+si @ orsOLZAh.js:14
+Ot @ orsOLZAh.js:14
+n @ orsOLZAh.js:19
+Ccw-dVso.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (Ccw-dVso.js:1:16502)
+    at async n (Ccw-dVso.js:1:24400)
+n @ Ccw-dVso.js:1
 await in n
-onClick @ BTPxmzll.js:1
-si @ -ps5VBj5.js:14
-Ot @ -ps5VBj5.js:14
-n @ -ps5VBj5.js:19
-BTPxmzll.js:1 🛒 [CART STORE] Toggle cart: true
-BTPxmzll.js:1 🛒 [CART STORE] Toggle cart: false
+onClick @ Ccw-dVso.js:1
+si @ orsOLZAh.js:14
+Ot @ orsOLZAh.js:14
+n @ orsOLZAh.js:19

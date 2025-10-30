@@ -18,6 +18,18 @@ export default defineNuxtPlugin(() => {
     publishableKey: config.public.medusaPublishableKey || ''
   })
 
+  // Debug: Log the SDK structure
+  console.log('🔍 Medusa SDK object:', medusa)
+  console.log('🔍 Available properties:', Object.keys(medusa))
+  console.log('🔍 Has .store?', !!medusa.store)
+  console.log('🔍 Has .carts?', !!medusa.carts)
+  console.log('🔍 Has .cart?', !!medusa.cart)
+  
+  // Check nested properties
+  if (medusa.store) {
+    console.log('🔍 store properties:', Object.keys(medusa.store))
+  }
+
   return {
     provide: {
       medusa

@@ -10,19 +10,24 @@ This document outlines what needs to be configured on the **Medusa Backend** (Ra
 3. ✅ **Created Region** - Set up region for cart functionality
 4. ✅ **Environment Variables Configured on Vercel** - Backend URL and Publishable Key set
 5. ✅ **Cart functionality working** - Cart creation successful
+6. ✅ **Publishable API Key linked to Sales Channel** - Products API now working
+7. ✅ **Product uploaded with image** - Test product displaying on frontend
+8. ✅ **Cart API paths fixed** - Changed from `store.cart.*` to `carts.*` in Medusa SDK
 
 ### ⏳ Steps In Progress:
-- [x] Create test products with images (Product added to Medusa)
-- [ ] Fix products API endpoint (500 error - investigating)
+- [x] Products API endpoint working (✅ RESOLVED)
+- [ ] Test "Add to Cart" functionality
 - [ ] Configure payment provider (Stripe)
 - [ ] Set up shipping options
 - [ ] Configure tax rates
+- [ ] Configure file storage on Railway (currently returning localhost URLs)
 
 ### 🐛 Current Issues:
-- **✅ IDENTIFIED: Publishable key needs sales channel configured**
-  - Error: `"Publishable key needs to have a sales channel configured"`
-  - Fix: Backend must link the publishable key to a sales channel in Medusa Admin
-  - Location: Settings → Publishable API Keys → Edit → Link to Sales Channel
+- **⏳ Image Storage Configuration**
+  - Product images are uploading but may show `localhost:9000` URLs
+  - Backend needs S3/MinIO/file storage properly configured on Railway
+  - Workaround: Frontend fallback to `images[0].url` when `thumbnail` is null
+  - Action needed: Ensure Medusa file storage is configured for Railway environment
 
 ### 📝 Notes:
 - Backend URL: `https://robert-gaunce-art-medusa-production.up.railway.app`
