@@ -2,6 +2,27 @@
 
 This document outlines what needs to be configured on the **Medusa Backend** (Railway) for the frontend to work properly.
 
+## 📋 Backend Configuration Progress
+
+### ✅ Completed Steps:
+1. ✅ **Added USD currency** - Set as default currency
+2. ✅ **Removed EURO currency** - Cleaned up unused currency
+3. ✅ **Created Region** - Set up region for cart functionality
+
+### ⏳ Steps In Progress:
+- [ ] Create test products with images
+- [ ] Configure payment provider (Stripe)
+- [ ] Set up shipping options
+- [ ] Configure tax rates
+- [ ] Upload product images
+
+### 📝 Notes:
+- Backend URL: `https://robert-gaunce-art-medusa-production.up.railway.app`
+- Publishable Key: Configured and working
+- Region created is required for cart functionality
+
+---
+
 ## ✅ Step 1 Completed: Frontend API Routes Created
 
 We've successfully created server-side API routes that will communicate with your Medusa backend:
@@ -11,22 +32,28 @@ We've successfully created server-side API routes that will communicate with you
 - ✅ `/composables/useProducts.ts` - Composable for product listings (SEO-friendly)
 - ✅ `/composables/useProduct.ts` - Composable for single product pages (SEO-friendly)
 
-## 🎯 What the Backend Team Needs to Do
+## 🎯 Backend Setup Checklist
 
-### 1. **Create and Provide Publishable API Key** ⚠️ REQUIRED
+### 1. **✅ DONE - Create and Provide Publishable API Key**
 
-Medusa v2 requires a publishable API key for all store API requests.
+✅ **Status: COMPLETED**
 
-**Backend Task:**
+Publishable API key has been created and configured:
+- Key: `pk_495a905d39e83ee4957af90c6605fda76d4d07412c152a22ff12408afe1cf195`
+- Frontend is configured with this key
 
-1. Log into Medusa Admin Dashboard on Railway
-2. Navigate to **Settings** → **Publishable API Keys**
-3. Click **"Create Publishable API Key"**
-4. Give it a name (e.g., "Frontend Production")
-5. Copy the generated key (starts with `pk_`)
-6. **Provide this key to the frontend team**
+### 2. **✅ DONE - Region Configuration**
 
-### 2. **Ensure Medusa Store API is Accessible**
+✅ **Status: COMPLETED**
+
+Region has been configured in Medusa:
+- Currency: USD (default)
+- EURO removed
+- Region created and active
+
+**Why this matters:** Carts require at least one region to function. Without a region, the cart creation fails with "Page not found: /store/carts"
+
+### 3. **Ensure Medusa Store API is Accessible**
 
 The frontend needs access to these Medusa Store API endpoints:
 
@@ -47,7 +74,7 @@ curl -H "x-publishable-api-key: YOUR_PUBLISHABLE_KEY" \
   https://robert-gaunce-art-medusa-production.up.railway.app/store/products/{id}
 ```
 
-### 3. **CORS Configuration** (CRITICAL)
+### 4. **CORS Configuration** (CRITICAL)
 
 Since the Nuxt frontend will be calling the Medusa backend from a different domain, CORS must be configured.
 
@@ -69,7 +96,7 @@ module.exports = {
 STORE_CORS=http://localhost:3000,https://robertgaunceart.com,https://www.robertgaunceart.com
 ```
 
-### 4. **Product Data Requirements**
+### 5. **Product Data Requirements**
 
 For artwork to display properly on the frontend, each product in Medusa should have:
 
@@ -95,7 +122,7 @@ For artwork to display properly on the frontend, each product in Medusa should h
   - `dimensions` - "11x14 inches"
   - `year` - "2024"
 
-### 5. **Image Hosting**
+### 6. **Image Hosting**
 
 **Backend Task:** Decide how product images will be hosted:
 
@@ -108,7 +135,7 @@ For artwork to display properly on the frontend, each product in Medusa should h
 - Upload images to Cloudinary, imgix, or similar
 - Add image URLs to products in Medusa
 
-### 6. **Test Products**
+### 7. **Test Products** ⏳ IN PROGRESS
 
 **Backend Task:** Create at least 2-3 test products with:
 - Title (e.g., "Watercolor Orchids")
@@ -116,23 +143,20 @@ For artwork to display properly on the frontend, each product in Medusa should h
 - At least one image
 - At least one variant with a price
 
-### 7. **Provide Frontend Team With:**
+### 8. **Integration Status**
 
-Once backend is ready, provide:
+**✅ Completed:**
+1. Railway Backend URL: `https://robert-gaunce-art-medusa-production.up.railway.app`
+2. Publishable API Key: Configured
+3. Region: Created with USD currency
+4. Currency: USD set as default
 
-1. **✅ Railway Backend URL** (RECEIVED)
-   - `https://robert-gaunce-art-medusa-production.up.railway.app`
-   
-2. **⏳ Publishable API Key** (NEEDED)
-   - Example: `pk_01H1234567890ABCDEFG`
-   - Get from: Settings → Publishable API Keys
-
-3. **Sample Product IDs** (for testing)
-   - Example: `prod_01H1234567890ABCDEFG`
-
-4. **Test the Endpoints**
-   - Confirm `/store/products` returns product data with API key
-   - Confirm CORS is properly configured
+**⏳ Pending:**
+1. Test products with images and prices
+2. CORS configuration for frontend domain
+3. Sample product IDs for testing
+4. Shipping options configuration
+5. Stripe payment configuration
 
 ## 📝 Frontend Configuration
 

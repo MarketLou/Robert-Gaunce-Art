@@ -22,75 +22,97 @@ export const useCartStore = defineStore('cart', {
 
   actions: {
     toggleCart() {
+      console.log('🛒 [CART STORE] Toggle cart:', !this.isOpen)
       this.isOpen = !this.isOpen
     },
 
     async initializeCart() {
+      console.log('🛒 [CART STORE] Initializing cart...')
       // Check localStorage for existing cart
       const savedCartId = localStorage.getItem('cart_id')
       
       if (savedCartId) {
+        console.log('🛒 [CART STORE] Found saved cart ID:', savedCartId)
         try {
           // Retrieve existing cart from Medusa
           const { $medusa } = useNuxtApp()
+          console.log('🛒 [CART STORE] Retrieving existing cart...')
           const response = await $medusa.store.cart.retrieve(savedCartId)
           
           if (response.cart) {
+            console.log('✅ [CART STORE] Cart retrieved successfully')
             this.cartId = savedCartId
             this.cart = response.cart
           } else {
+            console.log('⚠️ [CART STORE] Cart not found, creating new one')
             // Cart not found, create new one
             localStorage.removeItem('cart_id')
             await this.createCart()
           }
         } catch (error) {
-          console.error('Invalid cart, creating new one', error)
+          console.error('❌ [CART STORE] Invalid cart, creating new one:', error)
           localStorage.removeItem('cart_id')
           await this.createCart()
         }
       } else {
+        console.log('🛒 [CART STORE] No saved cart, creating new one')
         await this.createCart()
       }
     },
 
     async createCart() {
+      console.log('🛒 [CART STORE] Creating new cart...')
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
+        console.log('🛒 [CART STORE] Calling Medusa cart.create()')
         const response = await $medusa.store.cart.create({
           region_id: undefined, // Will use default region
         })
         
+        console.log('🛒 [CART STORE] Cart creation response:', response)
+        
         if (response.cart) {
+          console.log('✅ [CART STORE] Cart created successfully:', response.cart.id)
           this.cartId = response.cart.id
           this.cart = response.cart
           localStorage.setItem('cart_id', this.cartId)
+        } else {
+          console.error('❌ [CART STORE] No cart in response')
         }
       } catch (error) {
-        console.error('Failed to create cart', error)
+        console.error('❌ [CART STORE] Failed to create cart:', error)
       } finally {
         this.isLoading = false
       }
     },
 
     async addItem({ variantId, quantity }: { variantId: string, quantity: number }) {
+      console.log('🛒 [CART STORE] Adding item to cart:', { variantId, quantity })
+      
       if (!this.cartId) {
+        console.log('🛒 [CART STORE] No cart ID, creating cart first')
         await this.createCart()
       }
 
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
+        console.log('🛒 [CART STORE] Calling lineItems.create()', this.cartId)
         const response = await $medusa.store.cart.lineItems.create(this.cartId, {
           variant_id: variantId,
           quantity
         })
         
+        console.log('🛒 [CART STORE] Add item response:', response)
+        
         if (response.cart) {
+          console.log('✅ [CART STORE] Item added successfully')
           this.cart = response.cart
+          console.log('🛒 [CART STORE] Cart now has', this.cart.items?.length || 0, 'items')
         }
       } catch (error) {
-        console.error('Failed to add item to cart', error)
+        console.error('❌ [CART STORE] Failed to add item:', error)
         throw error
       } finally {
         this.isLoading = false

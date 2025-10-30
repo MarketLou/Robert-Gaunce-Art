@@ -7,6 +7,11 @@ export default defineNuxtPlugin(() => {
   let backendUrl = config.public.medusaBackendUrl || ''
   backendUrl = backendUrl.replace(/\/$/, '')
   
+  // Debug logging
+  console.log('🔧 Medusa Plugin Initialized')
+  console.log('📍 Backend URL:', backendUrl || '(EMPTY - CHECK YOUR .env FILE!)')
+  console.log('🔑 Publishable Key:', config.public.medusaPublishableKey ? '✅ Set' : '❌ Missing')
+  
   // Initialize Medusa SDK with publishable key
   const medusa = new Medusa({
     baseUrl: backendUrl,

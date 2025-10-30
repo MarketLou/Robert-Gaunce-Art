@@ -125,7 +125,24 @@ useSeoMeta({
 const cartStore = useCartStore()
 
 // Fetch products from Medusa backend
+console.log('🟦 [SHOP PAGE] Initializing shop page')
 const { products, pending, error, refresh } = useProducts()
+
+// Watch products for changes
+watch(products, (newProducts) => {
+  console.log('🛍️ [SHOP PAGE] Products updated:', newProducts.length)
+  console.log('🛍️ [SHOP PAGE] Products data:', newProducts)
+})
+
+watch(pending, (isPending) => {
+  console.log('🛍️ [SHOP PAGE] Loading state:', isPending)
+})
+
+watch(error, (err) => {
+  if (err) {
+    console.error('🛍️ [SHOP PAGE] Error:', err)
+  }
+})
 
 // Format price helper
 const formatPrice = (variant: any) => {
