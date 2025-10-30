@@ -132,6 +132,16 @@ const { products, pending, error, refresh } = useProducts()
 watch(products, (newProducts) => {
   console.log('🛍️ [SHOP PAGE] Products updated:', newProducts.length)
   console.log('🛍️ [SHOP PAGE] Products data:', newProducts)
+  
+  // Log image URLs specifically
+  if (newProducts.length > 0) {
+    newProducts.forEach((product: any, index: number) => {
+      console.log(`🖼️ [SHOP PAGE] Product ${index + 1} - "${product.title}"`)
+      console.log(`🖼️ [SHOP PAGE] - Thumbnail:`, product.thumbnail)
+      console.log(`🖼️ [SHOP PAGE] - Images:`, product.images)
+      console.log(`🖼️ [SHOP PAGE] - Full product:`, product)
+    })
+  }
 })
 
 watch(pending, (isPending) => {
