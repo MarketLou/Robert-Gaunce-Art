@@ -1,283 +1,90 @@
-BohX7m_w.js:45 🔧 Medusa Plugin Initialized
-BohX7m_w.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
-BohX7m_w.js:45 🔑 Publishable Key: ✅ Set
-BohX7m_w.js:45 🔍 Medusa SDK object: $b
-BohX7m_w.js:45 🔍 Available properties: Array(4)
-BohX7m_w.js:45 🔍 Has .store? true
-BohX7m_w.js:45 🔍 Has .carts? false
-BohX7m_w.js:45 🔍 Has .cart? false
-BohX7m_w.js:45 🔍 store properties: Array(10)
-CbUgSp2E.js:1 🟦 [SHOP PAGE] Initializing shop page
-CbUgSp2E.js:1 🔶 [COMPOSABLE] useProducts called
-CbUgSp2E.js:1 📊 [COMPOSABLE] Returning products: 0
-CbUgSp2E.js:1 🛒 [CART STORE] Initializing cart...
-CbUgSp2E.js:1 🛒 [CART STORE] No saved cart, creating new one
-CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.createCart (CbUgSp2E.js:1:15753)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at Proxy.initializeCart (CbUgSp2E.js:1:15542)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at CbUgSp2E.js:1:24589
-    at BohX7m_w.js:15:6550
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at t.__weh.t.__weh (BohX7m_w.js:15:6430)
-    at Ni (BohX7m_w.js:14:1619)
-createCart @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🔄 [COMPOSABLE] Transforming response: Object
-CbUgSp2E.js:1 🔄 [COMPOSABLE] Products count: 1
-CbUgSp2E.js:1 👀 [COMPOSABLE] Data changed: Object
-CbUgSp2E.js:1 👀 [COMPOSABLE] Products in data: 1
-CbUgSp2E.js:1 📊 [COMPOSABLE] Returning products: 1
-CbUgSp2E.js:1 🛍️ [SHOP PAGE] Products updated: 1
-CbUgSp2E.js:1 🛍️ [SHOP PAGE] Products data: Array(1)
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Full product: Object
-CbUgSp2E.js:1 ⏳ [COMPOSABLE] Pending status: false
-CbUgSp2E.js:1 🛍️ [SHOP PAGE] Loading state: false
-CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: Object
-CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
-CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.createCart (CbUgSp2E.js:1:15753)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at Proxy.addItem (CbUgSp2E.js:1:16347)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at n (CbUgSp2E.js:1:24408)
-    at onClick (CbUgSp2E.js:1:26390)
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
-createCart @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-addItem @ CbUgSp2E.js:1
-CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-n @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: Object
-CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
-CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.createCart (CbUgSp2E.js:1:15753)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at Proxy.addItem (CbUgSp2E.js:1:16347)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at n (CbUgSp2E.js:1:24408)
-    at onClick (CbUgSp2E.js:1:26390)
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
-createCart @ CbUgSp2E.js:1
-$ @ BohX7m_w.js:23
-addItem @ CbUgSp2E.js:1
-$ @ BohX7m_w.js:23
-n @ CbUgSp2E.js:1
-onClick @ CbUgSp2E.js:1
-si @ BohX7m_w.js:14
-Ot @ BohX7m_w.js:14
-n @ BohX7m_w.js:19
-CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-addItem @ CbUgSp2E.js:1
-CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-n @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🟦 [SHOP PAGE] Initializing shop page
-CbUgSp2E.js:1 🔶 [COMPOSABLE] useProducts called
-CbUgSp2E.js:1 📊 [COMPOSABLE] Returning products: 0
-CbUgSp2E.js:1 🛒 [CART STORE] Initializing cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VRSP7HD5VCFQ4GXX92N76N
-CbUgSp2E.js:1 🛒 [CART STORE] Retrieving existing cart...
-CbUgSp2E.js:1 ❌ [CART STORE] Invalid cart, creating new one: TypeError: Cannot read properties of undefined (reading 'retrieve')
-    at Proxy.initializeCart (CbUgSp2E.js:1:15093)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at CbUgSp2E.js:1:24589
-    at BohX7m_w.js:15:6550
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at t.__weh.t.__weh (BohX7m_w.js:15:6430)
-    at Ni (BohX7m_w.js:14:1619)
-    at bf (BohX7m_w.js:14:1928)
-initializeCart @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.createCart (CbUgSp2E.js:1:15753)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at Proxy.initializeCart (CbUgSp2E.js:1:15449)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at CbUgSp2E.js:1:24589
-    at BohX7m_w.js:15:6550
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at t.__weh.t.__weh (BohX7m_w.js:15:6430)
-    at Ni (BohX7m_w.js:14:1619)
-createCart @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🔄 [COMPOSABLE] Transforming response: Object
-CbUgSp2E.js:1 🔄 [COMPOSABLE] Products count: 2
-CbUgSp2E.js:1 👀 [COMPOSABLE] Data changed: Object
-CbUgSp2E.js:1 👀 [COMPOSABLE] Products in data: 2
-CbUgSp2E.js:1 📊 [COMPOSABLE] Returning products: 2
-CbUgSp2E.js:1 🛍️ [SHOP PAGE] Products updated: 2
-CbUgSp2E.js:1 🛍️ [SHOP PAGE] Products data: Array(2)
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Full product: Object
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] Product 2 - "Forest"
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Hero-01K8VRYVQ82E278NPFQZJ6FDJF.jpg
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
-CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Full product: Object
-CbUgSp2E.js:1 ⏳ [COMPOSABLE] Pending status: false
-CbUgSp2E.js:1 🛍️ [SHOP PAGE] Loading state: false
-CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: Object
-CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
-CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.createCart (CbUgSp2E.js:1:15753)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at Proxy.addItem (CbUgSp2E.js:1:16347)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at n (CbUgSp2E.js:1:24408)
-    at onClick (CbUgSp2E.js:1:26390)
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
-createCart @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-addItem @ CbUgSp2E.js:1
-CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-n @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🛒 [CART STORE] Toggle cart: true
-CbUgSp2E.js:1 🛒 [CART STORE] Toggle cart: false
-CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: Object
-CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
-CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.createCart (CbUgSp2E.js:1:15753)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at Proxy.addItem (CbUgSp2E.js:1:16347)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at n (CbUgSp2E.js:1:24408)
-    at onClick (CbUgSp2E.js:1:26390)
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
-createCart @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-addItem @ CbUgSp2E.js:1
-CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-n @ CbUgSp2E.js:1
-CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: {variantId: 'variant_01K8VRYWHY2MYTX4TY9GCXBZVE', quantity: 1}
-CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
-CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.createCart (CbUgSp2E.js:1:15753)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at Proxy.addItem (CbUgSp2E.js:1:16347)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at n (CbUgSp2E.js:1:24408)
-    at onClick (CbUgSp2E.js:1:26390)
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
-createCart @ CbUgSp2E.js:1
-$ @ BohX7m_w.js:23
-addItem @ CbUgSp2E.js:1
-$ @ BohX7m_w.js:23
-n @ CbUgSp2E.js:1
-onClick @ CbUgSp2E.js:1
-si @ BohX7m_w.js:14
-Ot @ BohX7m_w.js:14
-n @ BohX7m_w.js:19
-CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-addItem @ CbUgSp2E.js:1
-await in addItem
-$ @ BohX7m_w.js:23
-n @ CbUgSp2E.js:1
-onClick @ CbUgSp2E.js:1
-si @ BohX7m_w.js:14
-Ot @ BohX7m_w.js:14
-n @ BohX7m_w.js:19
-CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-n @ CbUgSp2E.js:1
-await in n
-onClick @ CbUgSp2E.js:1
-si @ BohX7m_w.js:14
-Ot @ BohX7m_w.js:14
-n @ BohX7m_w.js:19
-CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: {variantId: 'variant_01K8VRYWHY2MYTX4TY9GCXBZVE', quantity: 1}
-CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
-CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
-CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.createCart (CbUgSp2E.js:1:15753)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at Proxy.addItem (CbUgSp2E.js:1:16347)
-    at Proxy.$ (BohX7m_w.js:23:2323)
-    at n (CbUgSp2E.js:1:24408)
-    at onClick (CbUgSp2E.js:1:26390)
-    at si (BohX7m_w.js:14:38)
-    at Ot (BohX7m_w.js:14:109)
-    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
-createCart @ CbUgSp2E.js:1
-$ @ BohX7m_w.js:23
-addItem @ CbUgSp2E.js:1
-$ @ BohX7m_w.js:23
-n @ CbUgSp2E.js:1
-onClick @ CbUgSp2E.js:1
-si @ BohX7m_w.js:14
-Ot @ BohX7m_w.js:14
-n @ BohX7m_w.js:19
-CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
-CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-addItem @ CbUgSp2E.js:1
-await in addItem
-$ @ BohX7m_w.js:23
-n @ CbUgSp2E.js:1
-onClick @ CbUgSp2E.js:1
-si @ BohX7m_w.js:14
-Ot @ BohX7m_w.js:14
-n @ BohX7m_w.js:19
-CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
-    at Proxy.addItem (CbUgSp2E.js:1:16502)
-    at async n (CbUgSp2E.js:1:24400)
-n @ CbUgSp2E.js:1
-await in n
-onClick @ CbUgSp2E.js:1
-si @ BohX7m_w.js:14
-Ot @ BohX7m_w.js:14
-n @ BohX7m_w.js:19
+jKlZG86p.js:45 🔧 Medusa Plugin Initialized
+jKlZG86p.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
+jKlZG86p.js:45 🔑 Publishable Key: ✅ Set
+jKlZG86p.js:45 🔍 Medusa SDK object: $b {client: Xw, admin: Rb, store: Ab, auth: xb}
+jKlZG86p.js:45 🔍 Available properties: (4) ['client', 'admin', 'store', 'auth']
+jKlZG86p.js:45 🔍 Has .store? true
+jKlZG86p.js:45 🔍 Has .carts? false
+jKlZG86p.js:45 🔍 Has .cart? false
+jKlZG86p.js:45 🔍 store properties: (10) ['region', 'collection', 'category', 'product', 'cart', 'fulfillment', 'payment', 'order', 'customer', 'client']
+jKlZG86p.js:45 🔍 Has store.cart? true
+jKlZG86p.js:45 🔍 store.cart properties: (9) ['create', 'update', 'retrieve', 'createLineItem', 'updateLineItem', 'deleteLineItem', 'addShippingMethod', 'complete', 'transferCart']
+jKlZG86p.js:45 🔍 Has store.cart.lineItems? false
+jKlZG86p.js:45 🔍 Full store.cart object: {create: ƒ, update: ƒ, retrieve: ƒ, createLineItem: ƒ, updateLineItem: ƒ, …}
+8ac2l2jL.js:1 🛒 [CART STORE] Initializing cart...
+8ac2l2jL.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VVPJVR36X3T1R8GPCTS0JV
+8ac2l2jL.js:1 🛒 [CART STORE] Retrieving existing cart...
+8ac2l2jL.js:1 ✅ [CART STORE] Cart retrieved successfully
+CYr9JZ1T.js:1 📍 [CHECKOUT] Cart region ID: undefined
+CYr9JZ1T.js:1 📍 [CHECKOUT] Cart region name: undefined
+CYr9JZ1T.js:1 📍 [CHECKOUT] Cart region countries: undefined
+CYr9JZ1T.js:1 📍 [CHECKOUT] Cart region country codes: undefined
+8ac2l2jL.js:1 🛒 [CART STORE] Updating cart: cart_01K8VVPJVR36X3T1R8GPCTS0JV
+8ac2l2jL.js:1 🛒 [CART STORE] Current cart region: undefined undefined
+8ac2l2jL.js:1 🛒 [CART STORE] Current cart region countries: undefined
+8ac2l2jL.js:1 🛒 [CART STORE] Update payload: {email: 'aaron@marketlou.com', shipping_address: {…}}
+8ac2l2jL.js:1 🛒 [CART STORE] Shipping address country_code: US
+8ac2l2jL.js:1 🛒 [CART STORE] Region countries codes: undefined
+jKlZG86p.js:44  POST https://robert-gaunce-art-medusa-production.up.railway.app/store/carts/cart_01K8VVPJVR36X3T1R8GPCTS0JV 500 (Internal Server Error)
+(anonymous) @ jKlZG86p.js:44
+c @ jKlZG86p.js:39
+Promise.then
+u @ jKlZG86p.js:39
+(anonymous) @ jKlZG86p.js:39
+xt @ jKlZG86p.js:39
+(anonymous) @ jKlZG86p.js:41
+fetch @ jKlZG86p.js:39
+(anonymous) @ jKlZG86p.js:45
+(anonymous) @ jKlZG86p.js:45
+le @ jKlZG86p.js:45
+update @ jKlZG86p.js:45
+updateCart @ 8ac2l2jL.js:1
+$ @ jKlZG86p.js:23
+A @ CYr9JZ1T.js:1
+(anonymous) @ jKlZG86p.js:19
+si @ jKlZG86p.js:14
+Pt @ jKlZG86p.js:14
+n @ jKlZG86p.js:19
+8ac2l2jL.js:1 ❌ [CART STORE] Failed to update cart: Ch: An unknown error occurred.
+    at jKlZG86p.js:39:31786
+    at Generator.next (<anonymous>)
+    at c (jKlZG86p.js:39:30769)
+updateCart @ 8ac2l2jL.js:1
+await in updateCart
+$ @ jKlZG86p.js:23
+A @ CYr9JZ1T.js:1
+(anonymous) @ jKlZG86p.js:19
+si @ jKlZG86p.js:14
+Pt @ jKlZG86p.js:14
+n @ jKlZG86p.js:19
+8ac2l2jL.js:1 ❌ [CART STORE] Error message: An unknown error occurred.
+updateCart @ 8ac2l2jL.js:1
+await in updateCart
+$ @ jKlZG86p.js:23
+A @ CYr9JZ1T.js:1
+(anonymous) @ jKlZG86p.js:19
+si @ jKlZG86p.js:14
+Pt @ jKlZG86p.js:14
+n @ jKlZG86p.js:19
+8ac2l2jL.js:1 ❌ [CART STORE] Error details: Ch: An unknown error occurred.
+    at jKlZG86p.js:39:31786
+    at Generator.next (<anonymous>)
+    at c (jKlZG86p.js:39:30769)
+updateCart @ 8ac2l2jL.js:1
+await in updateCart
+$ @ jKlZG86p.js:23
+A @ CYr9JZ1T.js:1
+(anonymous) @ jKlZG86p.js:19
+si @ jKlZG86p.js:14
+Pt @ jKlZG86p.js:14
+n @ jKlZG86p.js:19
+CYr9JZ1T.js:1 Error updating shipping address: Ch: An unknown error occurred.
+    at jKlZG86p.js:39:31786
+    at Generator.next (<anonymous>)
+    at c (jKlZG86p.js:39:30769)
+A @ CYr9JZ1T.js:1
+await in A
+(anonymous) @ jKlZG86p.js:19
+si @ jKlZG86p.js:14
+Pt @ jKlZG86p.js:14
+n @ jKlZG86p.js:19

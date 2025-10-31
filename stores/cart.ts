@@ -37,12 +37,32 @@ export const useCartStore = defineStore('cart', {
           // Retrieve existing cart from Medusa
           const { $medusa } = useNuxtApp()
           console.log('🛒 [CART STORE] Retrieving existing cart...')
-          const response = await $medusa.store.cart.retrieve(savedCartId)
+          // Try to retrieve with region expanded - Medusa SDK may support expand parameter
+          const response = await $medusa.store.cart.retrieve(savedCartId, {
+            fields: '*,region.*,region.countries.*'
+          })
+          
+          console.log('🛒 [CART STORE] Cart retrieved response:', response)
+          console.log('🛒 [CART STORE] Cart region in response:', response.cart?.region)
           
           if (response.cart) {
             console.log('✅ [CART STORE] Cart retrieved successfully')
             this.cartId = savedCartId
             this.cart = response.cart
+            
+            // If region is still undefined, try fetching region separately
+            if (!response.cart.region && response.cart.region_id) {
+              console.log('⚠️ [CART STORE] Region not in response, fetching separately...')
+              try {
+                const regionResponse = await $medusa.store.region.retrieve(response.cart.region_id)
+                if (regionResponse.region) {
+                  this.cart.region = regionResponse.region
+                  console.log('✅ [CART STORE] Region fetched separately:', this.cart.region)
+                }
+              } catch (regionError) {
+                console.warn('⚠️ [CART STORE] Could not fetch region separately:', regionError)
+              }
+            }
           } else {
             console.log('⚠️ [CART STORE] Cart not found, creating new one')
             // Cart not found, create new one
