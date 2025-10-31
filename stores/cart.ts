@@ -37,20 +37,19 @@ export const useCartStore = defineStore('cart', {
           // Retrieve existing cart from Medusa
           const { $medusa } = useNuxtApp()
           console.log('🛒 [CART STORE] Retrieving existing cart...')
-          // Try to retrieve with region expanded - Medusa SDK may support expand parameter
-          const response = await $medusa.store.cart.retrieve(savedCartId, {
-            fields: '*,region.*,region.countries.*'
-          })
+          // Retrieve cart without fields parameter (causes 500 error)
+          const response = await $medusa.store.cart.retrieve(savedCartId)
           
           console.log('🛒 [CART STORE] Cart retrieved response:', response)
           console.log('🛒 [CART STORE] Cart region in response:', response.cart?.region)
+          console.log('🛒 [CART STORE] Cart region_id:', response.cart?.region_id)
           
           if (response.cart) {
             console.log('✅ [CART STORE] Cart retrieved successfully')
             this.cartId = savedCartId
             this.cart = response.cart
             
-            // If region is still undefined, try fetching region separately
+            // If region is not in response, fetch it separately using region_id
             if (!response.cart.region && response.cart.region_id) {
               console.log('⚠️ [CART STORE] Region not in response, fetching separately...')
               try {
@@ -58,9 +57,11 @@ export const useCartStore = defineStore('cart', {
                 if (regionResponse.region) {
                   this.cart.region = regionResponse.region
                   console.log('✅ [CART STORE] Region fetched separately:', this.cart.region)
+                  console.log('✅ [CART STORE] Region countries:', this.cart.region.countries)
+                  console.log('✅ [CART STORE] Region country codes:', this.cart.region.countries?.map((c: any) => `${c.iso_2} - ${c.display_name}`))
                 }
-              } catch (regionError) {
-                console.warn('⚠️ [CART STORE] Could not fetch region separately:', regionError)
+              } catch (regionError: any) {
+                console.warn('⚠️ [CART STORE] Could not fetch region separately:', regionError.message)
               }
             }
           } else {

@@ -313,7 +313,19 @@ onMounted(async () => {
       console.log('📍 [CHECKOUT] Cart region ID:', cartStore.cart.region?.id)
       console.log('📍 [CHECKOUT] Cart region name:', cartStore.cart.region?.name)
       console.log('📍 [CHECKOUT] Cart region countries:', cartStore.cart.region?.countries)
-      console.log('📍 [CHECKOUT] Cart region country codes:', cartStore.cart.region?.countries?.map((c: any) => `${c.iso_2} - ${c.display_name}`))
+      
+      // Expand country codes to see actual values
+      if (cartStore.cart.region?.countries) {
+        const countryCodes = cartStore.cart.region.countries.map((c: any) => `${c.iso_2} - ${c.display_name}`)
+        console.log('📍 [CHECKOUT] Cart region country codes:', countryCodes)
+        console.log('📍 [CHECKOUT] Cart region country codes (expanded):', JSON.stringify(cartStore.cart.region.countries, null, 2))
+        
+        // Log first country details
+        if (cartStore.cart.region.countries[0]) {
+          console.log('📍 [CHECKOUT] First country in region:', cartStore.cart.region.countries[0])
+          console.log('📍 [CHECKOUT] First country ISO code:', cartStore.cart.region.countries[0].iso_2)
+        }
+      }
       
       // Pre-fill country code from region if available
       if (cartStore.cart.region?.countries?.length > 0) {
