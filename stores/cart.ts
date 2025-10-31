@@ -234,8 +234,8 @@ export const useCartStore = defineStore('cart', {
     },
 
     async createPaymentSession(): Promise<string> {
-      if (!this.cartId) {
-        throw new Error('Cart ID is required')
+      if (!this.cartId || !this.cart) {
+        throw new Error('Cart ID and cart data are required')
       }
 
       console.log('💳 [CART STORE] Creating payment session for cart:', this.cartId)
@@ -250,64 +250,35 @@ export const useCartStore = defineStore('cart', {
           throw new Error('Medusa publishable API key is not configured')
         }
 
-        // Create payment session via Medusa API (direct fetch since SDK might not have this method)
-        const backendUrl = config.public.medusaBackendUrl?.replace(/\/$/, '')
-        
-        console.log('💳 [CART STORE] Creating payment session via Medusa API...')
-        const sessionResponse = await fetch(`${backendUrl}/store/payment-sessions`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-publishable-api-key': apiKey,
+        // Use Medusa SDK method (matches previous engineer's implementation)
+        // This uses SDK's internal mechanism which handles CORS properly
+        console.log('💳 [CART STORE] Using Medusa SDK initiatePaymentSession...')
+        const { payment_collection } = await $medusa.store.payment.initiatePaymentSession(
+          this.cart, 
+          {
+            provider_id: 'pp_stripe_stripe'  // Provider ID format from old implementation
           },
-          body: JSON.stringify({
-            cart_id: this.cartId,
-            provider_id: 'stripe'
-          })
-        })
+          {}, // query parameters
+          { "x-publishable-api-key": apiKey } // headers
+        )
 
-        if (!sessionResponse.ok) {
-          const errorText = await sessionResponse.text()
-          console.error('❌ [CART STORE] Payment session creation failed:', sessionResponse.status, errorText)
-          throw new Error(`Failed to create payment session: ${errorText}`)
+        // Find the Stripe payment session
+        const stripeSession = payment_collection.payment_sessions?.find(
+          (session: any) => session.provider_id === 'pp_stripe_stripe'
+        )
+
+        if (stripeSession) {
+          console.log('✅ [CART STORE] Payment session created successfully')
+          console.log('✅ [CART STORE] Client secret retrieved:', stripeSession.data.client_secret ? 'YES' : 'NO')
+          return stripeSession.data.client_secret
+        } else {
+          console.error('❌ [CART STORE] No Stripe payment session found in payment collection')
+          throw new Error('No Stripe payment session found')
         }
-
-        const sessionData = await sessionResponse.json()
-        console.log('✅ [CART STORE] Payment session created:', sessionData.payment_session?.id)
-
-        // Retrieve payment collection to get client secret
-        const paymentCollectionId = sessionData.payment_session?.payment_collection_id
-        if (!paymentCollectionId) {
-          throw new Error('No payment collection ID in response')
-        }
-
-        console.log('💳 [CART STORE] Retrieving payment collection:', paymentCollectionId)
-        const collectionResponse = await fetch(`${backendUrl}/store/payment-collections/${paymentCollectionId}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-publishable-api-key': apiKey,
-          }
-        })
-
-        if (!collectionResponse.ok) {
-          const errorText = await collectionResponse.text()
-          console.error('❌ [CART STORE] Payment collection retrieval failed:', collectionResponse.status, errorText)
-          throw new Error(`Failed to retrieve payment collection: ${errorText}`)
-        }
-
-        const collectionData = await collectionResponse.json()
-        const clientSecret = collectionData.payment_collection?.data?.client_secret
-
-        if (!clientSecret) {
-          throw new Error('No client secret in payment collection')
-        }
-
-        console.log('✅ [CART STORE] Client secret retrieved successfully')
-        return clientSecret
 
       } catch (error: any) {
         console.error('❌ [CART STORE] Error creating payment session:', error)
+        console.error('❌ [CART STORE] Error details:', error.response?.data || error.message)
         throw error
       } finally {
         this.isLoading = false
@@ -324,23 +295,33 @@ export const useCartStore = defineStore('cart', {
 
       try {
         const { $medusa } = useNuxtApp()
-        
-        // Complete the cart (create order)
-        const response = await $medusa.store.cart.complete(this.cartId)
-        
-        if (response.cart) {
-          console.log('✅ [CART STORE] Cart completed successfully')
-          console.log('✅ [CART STORE] Order created:', response.cart.order)
+        const config = useRuntimeConfig()
+        const apiKey = config.public.medusaPublishableKey
+
+        // Complete the cart (create order) - matches previous engineer's implementation
+        const result = await $medusa.store.cart.complete(
+          this.cartId,
+          {}, // query parameters
+          { "x-publishable-api-key": apiKey } // headers
+        )
+
+        // Check if completion was successful (matches old implementation)
+        if (result.type === 'order') {
+          // Order placed successfully
+          const { order } = result
           
-          // Clear cart after successful order
+          // Clear the cart after successful completion
           this.clearCart()
           
-          return response.cart.order || response.cart
+          console.log('✅ [CART STORE] Order completed successfully:', order.id)
+          return order
+        } else {
+          // Error occurred during completion
+          console.error('❌ [CART STORE] Error completing cart:', result.error)
+          throw new Error(result.error || 'Failed to complete cart')
         }
-
-        throw new Error('No order in response')
       } catch (error: any) {
-        console.error('❌ [CART STORE] Error completing cart:', error)
+        console.error('❌ [CART STORE] Error completing cart:', error.response?.data || error.message)
         throw error
       } finally {
         this.isLoading = false

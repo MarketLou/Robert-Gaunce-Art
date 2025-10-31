@@ -12,10 +12,11 @@ export default defineNuxtPlugin(() => {
   console.log('📍 Backend URL:', backendUrl || '(EMPTY - CHECK YOUR .env FILE!)')
   console.log('🔑 Publishable Key:', config.public.medusaPublishableKey ? '✅ Set' : '❌ Missing')
   
-  // Initialize Medusa SDK with publishable key
+  // Initialize Medusa SDK (matching previous engineer's implementation)
+  // Note: API key is passed manually in each request, not in constructor
   const medusa = new Medusa({
-    baseUrl: backendUrl,
-    publishableKey: config.public.medusaPublishableKey || ''
+    baseUrl: backendUrl
+    // publishableApiKey removed - must be passed manually in each request
   })
 
   // Debug: Log the SDK structure

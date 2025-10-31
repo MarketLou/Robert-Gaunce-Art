@@ -95,13 +95,18 @@ curl -H "x-publishable-api-key: YOUR_PUBLISHABLE_KEY" \
   https://robert-gaunce-art-medusa-production.up.railway.app/store/products/{id}
 ```
 
-### 4. **CORS Configuration** (CRITICAL)
+### 4. **CORS Configuration** (CRITICAL - REQUIRED FOR PAYMENT SESSIONS)
 
-Since the Nuxt frontend will be calling the Medusa backend from a different domain, CORS must be configured.
+Since the Nuxt frontend will be calling the Medusa backend from a different domain, CORS must be configured. **This is especially critical for payment session creation**, which calls Medusa API directly from the frontend.
 
 **Backend Task:** Add the frontend domain to Medusa's CORS settings.
 
-In your Medusa `medusa-config.js`:
+**Method 1: Environment Variable on Railway (Recommended)**
+```
+STORE_CORS=http://localhost:3000,https://robertgaunceart.com,https://www.robertgaunceart.com
+```
+
+**Method 2: In Medusa `medusa-config.js`:**
 
 ```javascript
 module.exports = {
@@ -112,10 +117,13 @@ module.exports = {
 }
 ```
 
-**Environment Variable to Set on Railway:**
+**⚠️ Current Status:** CORS not configured - Payment session creation is blocked with error:
 ```
-STORE_CORS=http://localhost:3000,https://robertgaunceart.com,https://www.robertgaunceart.com
+Access to fetch at '.../store/payment-sessions' from origin 'https://www.robertgaunceart.com' 
+has been blocked by CORS policy
 ```
+
+**Action Required:** Configure CORS on Railway Medusa backend to allow requests from the frontend domain.
 
 ### 5. **Product Data Requirements**
 
