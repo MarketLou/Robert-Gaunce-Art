@@ -1,122 +1,512 @@
- 🔧 Medusa Plugin Initialized
- 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
- 🔑 Publishable Key: ✅ Set
- 🔍 Medusa SDK object: $b
- 🔍 Available properties: Array(4)
- 🔍 Has .store? true
- 🔍 Has .carts? false
- 🔍 Has .cart? false
- 🔍 store properties: Array(10)
- 🔍 Has store.cart? true
- 🔍 store.cart properties: Array(9)
- 🔍 Has store.cart.lineItems? false
- 🔍 Full store.cart object: Object
- 🟦 [SHOP PAGE] Initializing shop page
- 🔶 [COMPOSABLE] useProducts called
- 📊 [COMPOSABLE] Returning products: 0
- 🛒 [CART STORE] Initializing cart...
- 🛒 [CART STORE] Found saved cart ID: cart_01K8VWPQD2HA9MV2F8PZ9X0GCZ
- 🛒 [CART STORE] Retrieving existing cart...
-robert-gaunce-art-medusa-production.up.railway.app/store/carts/cart_01K8VWPQD2HA9MV2F8PZ9X0GCZ?fields=%2A%2Cregion.%2A%2Cregion.countries.%2A:1  Failed to load resource: the server responded with a status of 500 ()
- ❌ [CART STORE] Invalid cart, creating new one: 
-initializeCart @ 29CCPv_U.js:1
- 🛒 [CART STORE] Creating new cart...
- 🛒 [CART STORE] Calling Medusa store.cart.create()
- 🔄 [COMPOSABLE] Transforming response: Object
- 🔄 [COMPOSABLE] Products count: 2
- 👀 [COMPOSABLE] Data changed: Object
- 👀 [COMPOSABLE] Products in data: 2
- 📊 [COMPOSABLE] Returning products: 2
- 🛍️ [SHOP PAGE] Products updated: 2
- 🛍️ [SHOP PAGE] Products data: Array(2)
- 🖼️ [SHOP PAGE] Product 1 - "test"
- 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Full product: Object
-BLMwk80V.js:1 🖼️ [SHOP PAGE] Product 2 - "Forest"
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Hero-01K8VRYVQ82E278NPFQZJ6FDJF.jpg
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Full product: Object
-BLMwk80V.js:1 ⏳ [COMPOSABLE] Pending status: false
-BLMwk80V.js:1 🛍️ [SHOP PAGE] Loading state: false
-29CCPv_U.js:1 🛒 [CART STORE] Cart creation response: Object
-29CCPv_U.js:1 ✅ [CART STORE] Cart created successfully: cart_01K8VWPXE8RACXJ2H2XCFQAX8J
-29CCPv_U.js:1 🛒 [CART STORE] Adding item to cart: Object
-29CCPv_U.js:1 🛒 [CART STORE] Calling store.cart.createLineItem() cart_01K8VWPXE8RACXJ2H2XCFQAX8J
-29CCPv_U.js:1 🛒 [CART STORE] Add item response: Object
-29CCPv_U.js:1 ✅ [CART STORE] Item added successfully
-29CCPv_U.js:1 🛒 [CART STORE] Cart now has 1 items
-29CCPv_U.js:1 🛒 [CART STORE] Toggle cart: false
-29CCPv_U.js:1 🛒 [CART STORE] Initializing cart...
-29CCPv_U.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VWPXE8RACXJ2H2XCFQAX8J
-29CCPv_U.js:1 🛒 [CART STORE] Retrieving existing cart...
-robert-gaunce-art-medusa-production.up.railway.app/store/carts/cart_01K8VWPXE8RACXJ2H2XCFQAX8J?fields=%2A%2Cregion.%2A%2Cregion.countries.%2A:1  Failed to load resource: the server responded with a status of 500 ()
-29CCPv_U.js:1 ❌ [CART STORE] Invalid cart, creating new one: Ch: An unknown error occurred.
-    at Cs1DAihj.js:39:31786
+CoyP6cZx.js:45 🔧 Medusa Plugin Initialized
+CoyP6cZx.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
+CoyP6cZx.js:45 🔑 Publishable Key: ✅ Set
+CoyP6cZx.js:45 🔍 Medusa SDK object: $b
+CoyP6cZx.js:45 🔍 Available properties: Array(4)
+CoyP6cZx.js:45 🔍 Has .store? true
+CoyP6cZx.js:45 🔍 Has .carts? false
+CoyP6cZx.js:45 🔍 Has .cart? false
+CoyP6cZx.js:45 🔍 store properties: Array(10)
+CoyP6cZx.js:45 🔍 Has store.cart? true
+CoyP6cZx.js:45 🔍 store.cart properties: Array(9)
+CoyP6cZx.js:45 🔍 Has store.cart.lineItems? false
+CoyP6cZx.js:45 🔍 Full store.cart object: Object
+CYREHuWK.js:1 🟦 [SHOP PAGE] Initializing shop page
+CYREHuWK.js:1 🔶 [COMPOSABLE] useProducts called
+CYREHuWK.js:1 📊 [COMPOSABLE] Returning products: 0
+B-luQsAS.js:1 🛒 [CART STORE] Initializing cart...
+B-luQsAS.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VWQ9N1X8BMGAC4HD2TCDPR
+B-luQsAS.js:1 🛒 [CART STORE] Retrieving existing cart...
+CYREHuWK.js:1 🔄 [COMPOSABLE] Transforming response: Object
+CYREHuWK.js:1 🔄 [COMPOSABLE] Products count: 2
+CYREHuWK.js:1 👀 [COMPOSABLE] Data changed: Object
+CYREHuWK.js:1 👀 [COMPOSABLE] Products in data: 2
+CYREHuWK.js:1 📊 [COMPOSABLE] Returning products: 2
+CYREHuWK.js:1 🛍️ [SHOP PAGE] Products updated: 2
+CYREHuWK.js:1 🛍️ [SHOP PAGE] Products data: Array(2)
+CYREHuWK.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
+CYREHuWK.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
+CYREHuWK.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
+CYREHuWK.js:1 🖼️ [SHOP PAGE] - Full product: Object
+CYREHuWK.js:1 🖼️ [SHOP PAGE] Product 2 - "Forest"
+CYREHuWK.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Hero-01K8VRYVQ82E278NPFQZJ6FDJF.jpg
+CYREHuWK.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
+CYREHuWK.js:1 🖼️ [SHOP PAGE] - Full product: Object
+CYREHuWK.js:1 ⏳ [COMPOSABLE] Pending status: false
+CYREHuWK.js:1 🛍️ [SHOP PAGE] Loading state: false
+B-luQsAS.js:1 🛒 [CART STORE] Cart retrieved response: Object
+B-luQsAS.js:1 🛒 [CART STORE] Cart region in response: Object
+B-luQsAS.js:1 🛒 [CART STORE] Cart region_id: reg_01K8VWFJ3HBYFH6H7GNJ5F7XJ0
+B-luQsAS.js:1 ✅ [CART STORE] Cart retrieved successfully
+B-luQsAS.js:1 🛒 [CART STORE] Adding item to cart: Object
+B-luQsAS.js:1 🛒 [CART STORE] Calling store.cart.createLineItem() cart_01K8VWQ9N1X8BMGAC4HD2TCDPR
+B-luQsAS.js:1 🛒 [CART STORE] Add item response: Object
+B-luQsAS.js:1 ✅ [CART STORE] Item added successfully
+B-luQsAS.js:1 🛒 [CART STORE] Cart now has 1 items
+B-luQsAS.js:1 🛒 [CART STORE] Toggle cart: false
+B-luQsAS.js:1 🛒 [CART STORE] Initializing cart...
+B-luQsAS.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VWQ9N1X8BMGAC4HD2TCDPR
+B-luQsAS.js:1 🛒 [CART STORE] Retrieving existing cart...
+B-luQsAS.js:1 🛒 [CART STORE] Cart retrieved response: Object
+B-luQsAS.js:1 🛒 [CART STORE] Cart region in response: Object
+B-luQsAS.js:1 🛒 [CART STORE] Cart region_id: reg_01K8VWFJ3HBYFH6H7GNJ5F7XJ0
+B-luQsAS.js:1 ✅ [CART STORE] Cart retrieved successfully
+2eyf9L_j.js:1 📍 [CHECKOUT] Cart region ID: reg_01K8VWFJ3HBYFH6H7GNJ5F7XJ0
+2eyf9L_j.js:1 📍 [CHECKOUT] Cart region name: Medusa Store
+2eyf9L_j.js:1 📍 [CHECKOUT] Cart region countries: Proxy(Array)
+2eyf9L_j.js:1 📍 [CHECKOUT] Cart region country codes: Array(1)
+2eyf9L_j.js:1 📍 [CHECKOUT] Cart region country codes (expanded): [
+  {
+    "iso_2": "us",
+    "iso_3": "usa",
+    "num_code": "840",
+    "name": "UNITED STATES",
+    "display_name": "United States",
+    "region_id": "reg_01K8VWFJ3HBYFH6H7GNJ5F7XJ0",
+    "metadata": null,
+    "created_at": "2025-10-30T02:24:14.677Z",
+    "updated_at": "2025-10-31T01:00:31.231Z",
+    "deleted_at": null
+  }
+]
+2eyf9L_j.js:1 📍 [CHECKOUT] First country in region: Proxy(Object)
+2eyf9L_j.js:1 📍 [CHECKOUT] First country ISO code: us
+B-luQsAS.js:1 🛒 [CART STORE] Updating cart: cart_01K8VWQ9N1X8BMGAC4HD2TCDPR
+B-luQsAS.js:1 🛒 [CART STORE] Current cart region: reg_01K8VWFJ3HBYFH6H7GNJ5F7XJ0 Medusa Store
+B-luQsAS.js:1 🛒 [CART STORE] Current cart region countries: Proxy(Array)
+B-luQsAS.js:1 🛒 [CART STORE] Update payload: Object
+B-luQsAS.js:1 🛒 [CART STORE] Shipping address country_code: US
+B-luQsAS.js:1 🛒 [CART STORE] Region countries codes: Array(1)
+robert-gaunce-art-medusa-production.up.railway.app/store/carts/cart_01K8VWQ9N1X8BMGAC4HD2TCDPR:1  Failed to load resource: the server responded with a status of 400 ()
+B-luQsAS.js:1 ❌ [CART STORE] Failed to update cart: Ch: Country with code US is not within region Medusa Store
+    at CoyP6cZx.js:39:31786
     at Generator.next (<anonymous>)
-    at c (Cs1DAihj.js:39:30769)
-initializeCart @ 29CCPv_U.js:1
-29CCPv_U.js:1 🛒 [CART STORE] Creating new cart...
-29CCPv_U.js:1 🛒 [CART STORE] Calling Medusa store.cart.create()
-29CCPv_U.js:1 🛒 [CART STORE] Cart creation response: Object
-29CCPv_U.js:1 ✅ [CART STORE] Cart created successfully: cart_01K8VWQ42YAZGPJY1131TSHM81
-D2BO3Oq6.js:1 📍 [CHECKOUT] Cart region ID: reg_01K8VWFJ3HBYFH6H7GNJ5F7XJ0
-D2BO3Oq6.js:1 📍 [CHECKOUT] Cart region name: Medusa Store
-D2BO3Oq6.js:1 📍 [CHECKOUT] Cart region countries: Proxy(Array)
-D2BO3Oq6.js:1 📍 [CHECKOUT] Cart region country codes: Array(1)
-BLMwk80V.js:1 🟦 [SHOP PAGE] Initializing shop page
-BLMwk80V.js:1 🔶 [COMPOSABLE] useProducts called
-BLMwk80V.js:1 📊 [COMPOSABLE] Returning products: 0
-29CCPv_U.js:1 🛒 [CART STORE] Initializing cart...
-29CCPv_U.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VWQ42YAZGPJY1131TSHM81
-29CCPv_U.js:1 🛒 [CART STORE] Retrieving existing cart...
-robert-gaunce-art-medusa-production.up.railway.app/store/carts/cart_01K8VWQ42YAZGPJY1131TSHM81?fields=%2A%2Cregion.%2A%2Cregion.countries.%2A:1  Failed to load resource: the server responded with a status of 500 ()
-29CCPv_U.js:1 ❌ [CART STORE] Invalid cart, creating new one: Ch: An unknown error occurred.
-    at Cs1DAihj.js:39:31786
+    at c (CoyP6cZx.js:39:30769)
+updateCart @ B-luQsAS.js:1
+B-luQsAS.js:1 ❌ [CART STORE] Error message: Country with code US is not within region Medusa Store
+updateCart @ B-luQsAS.js:1
+B-luQsAS.js:1 ❌ [CART STORE] Error details: Ch: Country with code US is not within region Medusa Store
+    at CoyP6cZx.js:39:31786
     at Generator.next (<anonymous>)
-    at c (Cs1DAihj.js:39:30769)
-initializeCart @ 29CCPv_U.js:1
-29CCPv_U.js:1 🛒 [CART STORE] Creating new cart...
-29CCPv_U.js:1 🛒 [CART STORE] Calling Medusa store.cart.create()
-BLMwk80V.js:1 🔄 [COMPOSABLE] Transforming response: Object
-BLMwk80V.js:1 🔄 [COMPOSABLE] Products count: 2
-BLMwk80V.js:1 👀 [COMPOSABLE] Data changed: Object
-BLMwk80V.js:1 👀 [COMPOSABLE] Products in data: 2
-BLMwk80V.js:1 📊 [COMPOSABLE] Returning products: 2
-BLMwk80V.js:1 🛍️ [SHOP PAGE] Products updated: 2
-BLMwk80V.js:1 🛍️ [SHOP PAGE] Products data: Array(2)
-BLMwk80V.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Full product: Object
-BLMwk80V.js:1 🖼️ [SHOP PAGE] Product 2 - "Forest"
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Hero-01K8VRYVQ82E278NPFQZJ6FDJF.jpg
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
-BLMwk80V.js:1 🖼️ [SHOP PAGE] - Full product: Object
-BLMwk80V.js:1 ⏳ [COMPOSABLE] Pending status: false
-BLMwk80V.js:1 🛍️ [SHOP PAGE] Loading state: false
-29CCPv_U.js:1 🛒 [CART STORE] Cart creation response: Object
-29CCPv_U.js:1 ✅ [CART STORE] Cart created successfully: cart_01K8VWQ5W4NMEQ0JXW69YAPNQM
-29CCPv_U.js:1 🛒 [CART STORE] Adding item to cart: Object
-29CCPv_U.js:1 🛒 [CART STORE] Calling store.cart.createLineItem() cart_01K8VWQ5W4NMEQ0JXW69YAPNQM
-29CCPv_U.js:1 🛒 [CART STORE] Add item response: Object
-29CCPv_U.js:1 ✅ [CART STORE] Item added successfully
-29CCPv_U.js:1 🛒 [CART STORE] Cart now has 1 items
-29CCPv_U.js:1 🛒 [CART STORE] Toggle cart: false
-29CCPv_U.js:1 🛒 [CART STORE] Initializing cart...
-29CCPv_U.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VWQ5W4NMEQ0JXW69YAPNQM
-29CCPv_U.js:1 🛒 [CART STORE] Retrieving existing cart...
-robert-gaunce-art-medusa-production.up.railway.app/store/carts/cart_01K8VWQ5W4NMEQ0JXW69YAPNQM?fields=%2A%2Cregion.%2A%2Cregion.countries.%2A:1  Failed to load resource: the server responded with a status of 500 ()
-29CCPv_U.js:1 ❌ [CART STORE] Invalid cart, creating new one: Ch: An unknown error occurred.
-    at Cs1DAihj.js:39:31786
+    at c (CoyP6cZx.js:39:30769)
+updateCart @ B-luQsAS.js:1
+2eyf9L_j.js:1 Error updating shipping address: Ch: Country with code US is not within region Medusa Store
+    at CoyP6cZx.js:39:31786
     at Generator.next (<anonymous>)
-    at c (Cs1DAihj.js:39:30769)
-initializeCart @ 29CCPv_U.js:1
-29CCPv_U.js:1 🛒 [CART STORE] Creating new cart...
-29CCPv_U.js:1 🛒 [CART STORE] Calling Medusa store.cart.create()
-29CCPv_U.js:1 🛒 [CART STORE] Cart creation response: Object
-29CCPv_U.js:1 ✅ [CART STORE] Cart created successfully: cart_01K8VWQ9N1X8BMGAC4HD2TCDPR
-D2BO3Oq6.js:1 📍 [CHECKOUT] Cart region ID: reg_01K8VWFJ3HBYFH6H7GNJ5F7XJ0
-D2BO3Oq6.js:1 📍 [CHECKOUT] Cart region name: Medusa Store
-D2BO3Oq6.js:1 📍 [CHECKOUT] Cart region countries: Proxy(Array)
-D2BO3Oq6.js:1 📍 [CHECKOUT] Cart region country codes: Array(1)
+    at c (CoyP6cZx.js:39:30769)
+N @ 2eyf9L_j.js:1
+
+
+
+
+
+# 🆘 Stripe Payment Integration Assistance Request
+
+**Date**: January 8, 2025  
+**Project**: Xclusive Digital Print Solutions  
+**Issue**: Stripe Payment Form Failing to Initialize  
+**Context**: Migrating working cart implementation to new page layout
+
+---
+
+## 🚨 **CURRENT PROBLEM**
+
+### **Issue**: "Failed to initialize payment form"
+The Stripe payment form is not loading on the frontend, showing this error message in Step 3 of our checkout process. However, we can see that the **backend is working correctly**.
+
+### **What We're Seeing:**
+
+**✅ BACKEND (Railway) - WORKING:**
+```
+Authenticating route POST /store/payment-collections
+Authenticating route POST /store/payment-collections/pay_col_01JZNJ0C6DDN33C47BMVVPG1T5/payment-sessions
+Processing payment.webhook_received which has 1 subscribers
+```
+
+**❌ FRONTEND - FAILING:**
+- Payment form shows "Failed to initialize payment form" 
+- Stripe element container renders but Stripe SDK fails to load payment form
+- "Retry" button doesn't resolve the issue
+
+---
+
+## 📋 **CONTEXT & BACKGROUND**
+
+### **What We Know Works:**
+- ✅ **Same Railway backend setup** (Medusa + Stripe integration)
+- ✅ **Backend payment session creation** (logs confirm success)
+- ✅ **3-step cart checkout flow** (Items → Customer Info → Payment)
+- ✅ **This exact setup worked before** on different page implementation
+
+### **What Changed:**
+- 🔄 **Migrated cart code** from previous working implementation to new page layout
+- 🔄 **Same codebase, same Railway backend** - just reorganized frontend structure
+- 🔄 **Unified cart implementation** (removed dual cart systems)
+
+---
+
+## 🔍 **TECHNICAL DETAILS**
+
+### **Current Frontend Configuration:**
+
+**Nuxt Config (`nuxt.config.ts`):**
+```typescript
+runtimeConfig: {
+  public: {
+    stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY
+  }
+},
+nitro: {
+  devProxy: {
+    '/api/medusa': {
+      target: 'https://xclusive-medusa-production.up.railway.app',
+      changeOrigin: true,
+      prependPath: false,
+      ws: false,
+      rewrite: (path: string) => path.replace(/^\/api\/medusa/, '')
+    }
+  }
+}
+```
+
+**Payment Component Logic:**
+```javascript
+// PaymentInfo.vue initialization
+const config = useRuntimeConfig()
+const STRIPE_PUBLISHABLE_KEY = config.public.stripePublishableKey
+
+// This is where it's failing:
+stripe.value = await loadStripe(STRIPE_PUBLISHABLE_KEY)
+```
+
+**Cart Store Integration:**
+```javascript
+// Cart store creates payment session successfully
+clientSecret.value = await cartStore.createPaymentSession()
+// ✅ This works - we see the backend logs
+```
+
+---
+
+## ❓ **QUESTIONS FOR ORIGINAL PROJECT OWNER**
+
+### **1. Environment Variables & Keys**
+- **Where did you configure the `STRIPE_PUBLISHABLE_KEY`?** 
+  - Railway environment variables?
+  - Different configuration method?
+  - Was there a specific way you set up the Stripe keys for production?
+
+### **2. Frontend-Backend Communication**
+- **How did you configure the frontend to communicate with Railway?**
+  - Did you use the same Nitro proxy setup?
+  - Any special Railway deployment configuration needed?
+  - Were there additional environment variables required?
+
+### **3. Stripe SDK Configuration**
+- **Did you encounter this "Failed to initialize payment form" issue?**
+  - How did you resolve it?
+  - Any specific Stripe SDK configuration needed?
+  - Was there a particular version of `@stripe/stripe-js` that worked?
+
+### **4. Deployment Setup**
+- **Where is the frontend deployed?** (Vercel/Netlify/Railway/Other?)
+- **How did you handle environment variables for production?**
+- **Any build-time configuration needed for Railway integration?**
+
+### **5. Previous Working Implementation**
+- **Can you share the exact configuration that was working?**
+  - Environment variable setup
+  - Any additional configuration files
+  - Specific deployment steps for Railway integration
+
+---
+
+## 🛠 **WHAT WE'VE ALREADY TRIED**
+
+- ✅ **Verified backend works** (Railway logs show successful payment session creation)
+- ✅ **Added `.env` file locally** (works for development)
+- ✅ **Confirmed cart flow works** (reaches Step 3 payment successfully)
+- ✅ **Verified Stripe package installed** (`@stripe/stripe-js`)
+- ✅ **Fixed cart implementation conflicts** (unified to single working system)
+
+---
+
+## 🎯 **SPECIFIC HELP NEEDED**
+
+**We need guidance on:**
+1. **Production environment variable configuration** for Stripe keys
+2. **Railway-specific setup requirements** for frontend-backend communication  
+3. **Any missing configuration** that was working in previous implementation
+4. **Deployment steps** to ensure Stripe integration works in production
+
+---
+
+## 📊 **CURRENT STATE**
+
+- **Backend**: ✅ Fully functional on Railway
+- **Frontend Development**: ✅ Working locally with `.env` file
+- **Frontend Production**: ❌ Stripe initialization failing
+- **User Experience**: ❌ Cannot complete payments
+
+---
+
+**Thank you for your assistance! Any insights on how you successfully set up the Stripe integration with Railway would be greatly appreciated.** 
+
+
+
+
+# Stripe Payment Integration Help Guide
+
+## 🚨 **MISSING COMPONENT ISSUE**
+
+The screenshot shows the cart is working, but the **Stripe payment component is not visible**. This component should appear below the cart items when there are products in the cart.
+
+## 📝 **EXACT COMPONENT NAME**
+
+The missing component is: **`components/cart/PaymentInfo.vue`**
+
+This component should have been copied from the original project. If it's missing, **FLAG ME DOWN IN ALL CAPS** - you'll need the complete component code.
+
+## 🔧 **Required Dependencies**
+
+Make sure these are installed in `package.json`:
+
+```json
+{
+  "dependencies": {
+    "@stripe/stripe-js": "^2.4.0",
+    "@stripe/vue-stripe-js": "^1.0.7"
+  }
+}
+```
+
+If these are not installed, run:
+```bash
+npm install @stripe/stripe-js @stripe/vue-stripe-js
+```
+
+## 🔑 **Stripe Configuration Requirements**
+
+### 1. **Environment Variables Needed**
+Create a `.env` file with your Stripe keys:
+
+```env
+STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
+STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key_here
+```
+
+⚠️ **IF YOU DON'T HAVE STRIPE KEYS, FLAG ME DOWN IN ALL CAPS** - you'll need to set up a Stripe account.
+
+### 2. **Nuxt Configuration**
+Add to your `nuxt.config.ts`:
+
+```typescript
+export default defineNuxtConfig({
+  runtimeConfig: {
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+    public: {
+      stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY
+    }
+  }
+})
+```
+
+## 🧩 **How PaymentInfo.vue Should Integrate**
+
+### **In CartSidebar.vue, verify this line exists:**
+
+```vue
+<template>
+  <div class="cart-sidebar">
+    <!-- ... other cart content ... -->
+    
+    <!-- Customer Information Form -->
+    <CustomerInfo @update-customer-info="handleCustomerUpdate" />
+
+    <!-- Vehicle Information Form -->
+    <VehicleInfo @update-vehicle-info="handleVehicleUpdate" />
+
+    <!-- THIS LINE MUST BE PRESENT: -->
+    <PaymentInfo v-if="cartStore.hasItems" />
+    
+  </div>
+</template>
+```
+
+### **Import Statement Required:**
+```vue
+<script setup>
+import PaymentInfo from '~/components/cart/PaymentInfo.vue';
+// ... other imports
+</script>
+```
+
+## 🛠 **Troubleshooting Checklist**
+
+### **Issue 1: Component Not Showing**
+**Check these in order:**
+
+1. ✅ **File exists**: `components/cart/PaymentInfo.vue` exists in project
+2. ✅ **Import added**: PaymentInfo is imported in CartSidebar.vue
+3. ✅ **Template includes**: `<PaymentInfo v-if="cartStore.hasItems" />` exists
+4. ✅ **Items in cart**: Cart actually has items (cartStore.hasItems returns true)
+
+### **Issue 2: Stripe Not Loading**
+**Check these:**
+
+1. ✅ **Dependencies installed**: @stripe/stripe-js and @stripe/vue-stripe-js
+2. ✅ **Environment variables**: STRIPE_PUBLISHABLE_KEY is set
+3. ✅ **Nuxt config**: runtimeConfig includes Stripe keys
+4. ✅ **Console errors**: Check browser console for Stripe-related errors
+
+### **Issue 3: Payment Not Processing**
+**Check these:**
+
+1. ✅ **Medusa backend**: Payment provider configured for Stripe
+2. ✅ **Cart metadata**: Customer and vehicle info properly saved
+3. ✅ **Shipping method**: Auto-pickup shipping method added
+4. ✅ **Payment session**: Stripe payment session created successfully
+
+## 📋 **Complete PaymentInfo.vue Component Structure**
+
+**IF THE COMPONENT IS MISSING, FLAG ME DOWN IN ALL CAPS**
+
+The component should include:
+- Stripe Elements integration
+- Credit card input fields
+- Payment processing logic
+- Error handling
+- Loading states
+- Integration with cart store
+
+## 🔗 **Integration with Cart Store**
+
+The PaymentInfo component uses these cart store methods:
+
+```javascript
+// These methods MUST exist in store/cart.js:
+- cartStore.createPaymentSession()
+- cartStore.completeCart() 
+- cartStore.updateCartDetails()
+- cartStore.hasItems (getter)
+- cartStore.formattedTotal (getter)
+```
+
+**IF ANY OF THESE ARE MISSING FROM YOUR CART STORE, FLAG ME DOWN IN ALL CAPS**
+
+## 🚨 **Critical Requirements Checklist**
+
+Before the payment component will work, verify ALL of these:
+
+### **Backend Requirements:**
+- [ ] Medusa backend has Stripe payment provider configured
+- [ ] Payment provider ID matches in cart store: `'pp_stripe_stripe'`
+- [ ] Shipping methods are set up (pickup option)
+- [ ] Sales channel is properly configured
+
+**IF ANY BACKEND ITEMS ARE NOT SET UP, FLAG ME DOWN IN ALL CAPS**
+
+### **Frontend Requirements:**
+- [ ] PaymentInfo.vue component exists
+- [ ] Stripe dependencies installed
+- [ ] Environment variables configured
+- [ ] Component imported in CartSidebar.vue
+- [ ] Template includes PaymentInfo component
+
+### **Cart State Requirements:**
+- [ ] Cart has items (cartStore.hasItems = true)
+- [ ] Customer info collected and saved
+- [ ] Vehicle info collected and saved
+- [ ] Shipping method added to cart
+
+## 🔍 **Debugging Steps**
+
+### **Step 1: Check Component Visibility**
+Open browser dev tools and check if PaymentInfo component is in the DOM:
+
+```javascript
+// In browser console:
+console.log('Cart has items:', cartStore.hasItems)
+console.log('PaymentInfo element:', document.querySelector('[data-component="payment-info"]'))
+```
+
+### **Step 2: Check Cart Store State**
+```javascript
+// In browser console:
+console.log('Cart store state:', cartStore.cart)
+console.log('Customer info:', cartStore.cart?.email)
+console.log('Shipping method:', cartStore.cart?.shipping_methods)
+```
+
+### **Step 3: Check Stripe Loading**
+```javascript
+// In browser console:
+console.log('Stripe object:', window.Stripe)
+```
+
+## 🚨 **WHEN TO FLAG FOR HELP**
+
+**FLAG ME DOWN IN ALL CAPS IF:**
+
+1. ❌ **PaymentInfo.vue component file is completely missing**
+2. ❌ **You don't have Stripe API keys (need to create Stripe account)**
+3. ❌ **Medusa backend doesn't have Stripe configured**
+4. ❌ **Cart store is missing payment-related methods**
+5. ❌ **Component exists but shows console errors you can't resolve**
+6. ❌ **Payment processing starts but fails with backend errors**
+
+## 💡 **Quick Fix Attempts**
+
+Try these first before flagging for help:
+
+### **Fix 1: Force Component Visibility**
+Temporarily remove the `v-if` condition:
+```vue
+<!-- Change this: -->
+<PaymentInfo v-if="cartStore.hasItems" />
+
+<!-- To this for testing: -->
+<PaymentInfo />
+```
+
+### **Fix 2: Check Component Import**
+Make sure import path is correct:
+```vue
+<script setup>
+import PaymentInfo from '~/components/cart/PaymentInfo.vue'
+// NOT: import PaymentInfo from './cart/PaymentInfo.vue'
+</script>
+```
+
+### **Fix 3: Verify Cart Items**
+Add debug info to see cart state:
+```vue
+<template>
+  <div>
+    <p>Debug: Has items = {{ cartStore.hasItems }}</p>
+    <p>Debug: Item count = {{ cartStore.itemCount }}</p>
+    <PaymentInfo v-if="cartStore.hasItems" />
+  </div>
+</template>
+```
+
+## 🎯 **Expected Final Result**
+
+When working correctly, the cart sidebar should show:
+
+1. **Cart Items** (✅ Working - visible in screenshot)
+2. **Customer Info Form** (❓ Should be visible)
+3. **Vehicle Info Form** (❓ Should be visible) 
+4. **Payment Info Form** (❌ Missing - this is the problem)
+
+The Payment Info section should include:
+- Credit card number field
+- Expiry date field
+- CVC field
+- Cardholder name field
+- "Process Payment" button
+- Total amount display
+
+**IF THE PAYMENT SECTION IS STILL NOT VISIBLE AFTER FOLLOWING THIS GUIDE, FLAG ME DOWN IN ALL CAPS WITH THE SPECIFIC ERROR OR ISSUE YOU'RE SEEING.** 
+
+

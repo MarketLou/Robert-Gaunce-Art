@@ -264,7 +264,7 @@ const shippingForm = ref({
   city: '',
   province: '',
   postal_code: '',
-  country_code: 'US',
+  country_code: 'us', // Lowercase to match Medusa region format
   phone: ''
 })
 
@@ -350,6 +350,7 @@ const handleShippingSubmit = async () => {
   isSubmitting.value = true
   try {
     // Update cart with shipping address
+    // IMPORTANT: Country code must be lowercase to match Medusa region
     await cartStore.updateCart({
       email: shippingForm.value.email,
       shipping_address: {
@@ -360,7 +361,7 @@ const handleShippingSubmit = async () => {
         city: shippingForm.value.city,
         province: shippingForm.value.province,
         postal_code: shippingForm.value.postal_code,
-        country_code: shippingForm.value.country_code,
+        country_code: shippingForm.value.country_code.toLowerCase(), // Convert to lowercase
         phone: shippingForm.value.phone || undefined,
       }
     })
