@@ -47,9 +47,20 @@ export const useCartStore = defineStore('cart', {
         try {
           // Retrieve existing cart from Medusa
           const { $medusa } = useNuxtApp()
+          const config = useRuntimeConfig()
+          const apiKey = config.public.medusaPublishableKey
+          
+          if (!apiKey) {
+            throw new Error('Medusa publishable API key is not configured')
+          }
+          
           console.log('🛒 [CART STORE] Retrieving existing cart...')
-          // Retrieve cart without fields parameter (causes 500 error)
-          const response = await $medusa.store.cart.retrieve(savedCartId)
+          // Retrieve cart with API key in headers (matches old implementation)
+          const response = await $medusa.store.cart.retrieve(
+            savedCartId,
+            {}, // query parameters
+            { "x-publishable-api-key": apiKey } // headers
+          )
           
           console.log('🛒 [CART STORE] Cart retrieved response:', response)
           console.log('🛒 [CART STORE] Cart region in response:', response.cart?.region)
@@ -64,7 +75,11 @@ export const useCartStore = defineStore('cart', {
             if (!response.cart.region && response.cart.region_id) {
               console.log('⚠️ [CART STORE] Region not in response, fetching separately...')
               try {
-                const regionResponse = await $medusa.store.region.retrieve(response.cart.region_id)
+                const regionResponse = await $medusa.store.region.retrieve(
+                  response.cart.region_id,
+                  {}, // query parameters
+                  { "x-publishable-api-key": apiKey } // headers
+                )
                 if (regionResponse.region) {
                   this.cart.region = regionResponse.region
                   console.log('✅ [CART STORE] Region fetched separately:', this.cart.region)
@@ -97,10 +112,21 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
+        const config = useRuntimeConfig()
+        const apiKey = config.public.medusaPublishableKey
+        
+        if (!apiKey) {
+          throw new Error('Medusa publishable API key is not configured')
+        }
+        
         console.log('🛒 [CART STORE] Calling Medusa store.cart.create()')
-        const response = await $medusa.store.cart.create({
-          region_id: undefined, // Will use default region
-        })
+        const response = await $medusa.store.cart.create(
+          {
+            region_id: undefined, // Will use default region
+          },
+          {}, // query parameters
+          { "x-publishable-api-key": apiKey } // headers
+        )
         
         console.log('🛒 [CART STORE] Cart creation response:', response)
         
@@ -130,11 +156,23 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
+        const config = useRuntimeConfig()
+        const apiKey = config.public.medusaPublishableKey
+        
+        if (!apiKey) {
+          throw new Error('Medusa publishable API key is not configured')
+        }
+        
         console.log('🛒 [CART STORE] Calling store.cart.createLineItem()', this.cartId)
-        const response = await $medusa.store.cart.createLineItem(this.cartId, {
-          variant_id: variantId,
-          quantity
-        })
+        const response = await $medusa.store.cart.createLineItem(
+          this.cartId,
+          {
+            variant_id: variantId,
+            quantity
+          },
+          {}, // query parameters
+          { "x-publishable-api-key": apiKey } // headers
+        )
         
         console.log('🛒 [CART STORE] Add item response:', response)
         
@@ -157,7 +195,18 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        const response = await $medusa.store.cart.deleteLineItem(this.cartId, itemId)
+        const config = useRuntimeConfig()
+        const apiKey = config.public.medusaPublishableKey
+        
+        if (!apiKey) {
+          throw new Error('Medusa publishable API key is not configured')
+        }
+        
+        const response = await $medusa.store.cart.deleteLineItem(
+          this.cartId,
+          itemId,
+          { "x-publishable-api-key": apiKey } // headers
+        )
         
         if (response.cart) {
           this.cart = response.cart
@@ -176,9 +225,22 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        const response = await $medusa.store.cart.updateLineItem(this.cartId, itemId, {
-          quantity
-        })
+        const config = useRuntimeConfig()
+        const apiKey = config.public.medusaPublishableKey
+        
+        if (!apiKey) {
+          throw new Error('Medusa publishable API key is not configured')
+        }
+        
+        const response = await $medusa.store.cart.updateLineItem(
+          this.cartId,
+          itemId,
+          {
+            quantity
+          },
+          {}, // query parameters
+          { "x-publishable-api-key": apiKey } // headers
+        )
         
         if (response.cart) {
           this.cart = response.cart
@@ -210,7 +272,12 @@ export const useCartStore = defineStore('cart', {
           console.log('🛒 [CART STORE] Region countries codes:', this.cart?.region?.countries?.map((c: any) => c.iso_2))
         }
         
-        const response = await $medusa.store.cart.update(this.cartId, updates)
+        const response = await $medusa.store.cart.update(
+          this.cartId,
+          updates,
+          {}, // query parameters
+          { "x-publishable-api-key": config.public.medusaPublishableKey } // headers
+        )
         
         if (response.cart) {
           console.log('✅ [CART STORE] Cart updated successfully')
