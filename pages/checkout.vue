@@ -307,6 +307,23 @@ onMounted(async () => {
     } else {
       await cartStore.initializeCart()
     }
+    
+    // Debug: Log cart region info after loading
+    if (cartStore.cart) {
+      console.log('📍 [CHECKOUT] Cart region ID:', cartStore.cart.region?.id)
+      console.log('📍 [CHECKOUT] Cart region name:', cartStore.cart.region?.name)
+      console.log('📍 [CHECKOUT] Cart region countries:', cartStore.cart.region?.countries)
+      console.log('📍 [CHECKOUT] Cart region country codes:', cartStore.cart.region?.countries?.map((c: any) => `${c.iso_2} - ${c.display_name}`))
+      
+      // Pre-fill country code from region if available
+      if (cartStore.cart.region?.countries?.length > 0) {
+        const defaultCountry = cartStore.cart.region.countries[0]
+        if (defaultCountry?.iso_2 && !shippingForm.value.country_code) {
+          shippingForm.value.country_code = defaultCountry.iso_2
+          console.log('📍 [CHECKOUT] Pre-filled country code from region:', defaultCountry.iso_2)
+        }
+      }
+    }
   } catch (error) {
     console.error('Error loading cart:', error)
   } finally {

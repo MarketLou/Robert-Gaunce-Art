@@ -165,13 +165,30 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
+        
+        // Debug: Log current cart region info
+        console.log('🛒 [CART STORE] Updating cart:', this.cartId)
+        console.log('🛒 [CART STORE] Current cart region:', this.cart?.region?.id, this.cart?.region?.name)
+        console.log('🛒 [CART STORE] Current cart region countries:', this.cart?.region?.countries)
+        console.log('🛒 [CART STORE] Update payload:', updates)
+        
+        // Debug: Check shipping address country code
+        if (updates.shipping_address) {
+          console.log('🛒 [CART STORE] Shipping address country_code:', updates.shipping_address.country_code)
+          console.log('🛒 [CART STORE] Region countries codes:', this.cart?.region?.countries?.map((c: any) => c.iso_2))
+        }
+        
         const response = await $medusa.store.cart.update(this.cartId, updates)
         
         if (response.cart) {
+          console.log('✅ [CART STORE] Cart updated successfully')
+          console.log('✅ [CART STORE] Updated cart region:', response.cart.region?.id, response.cart.region?.name)
           this.cart = response.cart
         }
-      } catch (error) {
-        console.error('Failed to update cart', error)
+      } catch (error: any) {
+        console.error('❌ [CART STORE] Failed to update cart:', error)
+        console.error('❌ [CART STORE] Error message:', error.message)
+        console.error('❌ [CART STORE] Error details:', error)
         throw error
       } finally {
         this.isLoading = false
