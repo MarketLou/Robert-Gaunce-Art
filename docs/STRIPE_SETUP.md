@@ -320,9 +320,31 @@ localStorage.removeItem('cart_id');
 ### Next Steps for Testing:
 
 1. ✅ Ensure `STRIPE_PUBLISHABLE_KEY` is set in Vercel environment variables
-2. Test checkout flow with test card: `4242 4242 4242 4242`
-3. Verify payment session creation works
-4. Test successful payment flow
-5. Verify cart clearing after payment
-6. Test order confirmation page display
+2. ✅ **Country code case sensitivity fixed** - Now using lowercase `us` to match Medusa region
+3. ⚠️ **Payment session API route** - Currently returning 404, may need Vercel rebuild
+4. Test checkout flow with test card: `4242 4242 4242 4242` (after payment route is deployed)
+5. Verify payment session creation works
+6. Test successful payment flow
+7. Verify cart clearing after payment
+8. Test order confirmation page display
+
+## 🐛 Current Issues
+
+### ✅ RESOLVED: Country Code Case Sensitivity
+**Issue:** Country code mismatch - region uses `"us"` (lowercase) but frontend sent `"US"` (uppercase)  
+**Error:** `Country with code US is not within region Medusa Store`  
+**Fix:** Convert country code to lowercase before sending to Medusa  
+**Status:** ✅ Fixed and working
+
+### ⏳ IN PROGRESS: Payment Session API Route 404
+**Issue:** `POST /api/payments/create-session` returning 404  
+**Possible Causes:**
+- Vercel hasn't rebuilt with the new route yet
+- Build cache issue on Vercel
+- Route file not included in deployment
+
+**Solution:** 
+- Wait for Vercel to complete rebuild (check Vercel dashboard)
+- Try triggering a new deployment
+- Verify route exists at `server/api/payments/create-session.post.ts`
 

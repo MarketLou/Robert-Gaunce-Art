@@ -1,3 +1,7 @@
+/**
+ * Server API Route: Create Stripe Payment Session
+ * This runs on the Nuxt server to create a payment session with Medusa
+ */
 export default defineEventHandler(async (event) => {
   console.log('💳 [PAYMENT API] Creating payment session...')
 
