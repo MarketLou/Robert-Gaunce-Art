@@ -256,7 +256,7 @@ export const useCartStore = defineStore('cart', {
         const { payment_collection } = await $medusa.store.payment.initiatePaymentSession(
           this.cart, 
           {
-            provider_id: 'pp_stripe_stripe'  // Provider ID format from old implementation
+            provider_id: 'pp_stripe'  // Provider ID: 'stripe' in config becomes 'pp_stripe' in API
           },
           {}, // query parameters
           { "x-publishable-api-key": apiKey } // headers
@@ -264,7 +264,7 @@ export const useCartStore = defineStore('cart', {
 
         // Find the Stripe payment session
         const stripeSession = payment_collection.payment_sessions?.find(
-          (session: any) => session.provider_id === 'pp_stripe_stripe'
+          (session: any) => session.provider_id === 'pp_stripe'
         )
 
         if (stripeSession) {
