@@ -65,6 +65,7 @@ export default defineNuxtConfig({
     public: {
       medusaBackendUrl: process.env.MEDUSA_BACKEND_URL || '',
       medusaPublishableKey: process.env.MEDUSA_PUBLISHABLE_KEY || '',
+      stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY || '',
     }
   },
 
