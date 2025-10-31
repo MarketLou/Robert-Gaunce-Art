@@ -272,11 +272,18 @@ export const useCartStore = defineStore('cart', {
           console.log('🛒 [CART STORE] Region countries codes:', this.cart?.region?.countries?.map((c: any) => c.iso_2))
         }
         
+        const config = useRuntimeConfig()
+        const apiKey = config.public.medusaPublishableKey
+        
+        if (!apiKey) {
+          throw new Error('Medusa publishable API key is not configured')
+        }
+        
         const response = await $medusa.store.cart.update(
           this.cartId,
           updates,
           {}, // query parameters
-          { "x-publishable-api-key": config.public.medusaPublishableKey } // headers
+          { "x-publishable-api-key": apiKey } // headers
         )
         
         if (response.cart) {
