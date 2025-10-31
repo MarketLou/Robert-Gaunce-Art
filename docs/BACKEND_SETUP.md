@@ -11,23 +11,22 @@ This document outlines what needs to be configured on the **Medusa Backend** (Ra
 4. ✅ **Environment Variables Configured on Vercel** - Backend URL and Publishable Key set
 5. ✅ **Cart functionality working** - Cart creation successful
 6. ✅ **Publishable API Key linked to Sales Channel** - Products API now working
-7. ✅ **Product uploaded with image** - Test product displaying on frontend
-8. ✅ **Cart API paths fixed** - Changed from `store.cart.*` to `carts.*` in Medusa SDK
+7. ✅ **Product uploaded with image** - Test products displaying on frontend
+8. ✅ **Cart API structure fixed** - Fixed to use correct Medusa SDK methods (`createLineItem`, `updateLineItem`, `deleteLineItem`)
+9. ✅ **Add to Cart functionality** - Fully working
+10. ✅ **Cart operations complete** - Create, retrieve, add, update, remove all working
+11. ✅ **File storage configured** - DigitalOcean Spaces working correctly
 
 ### ⏳ Steps In Progress:
-- [x] Products API endpoint working (✅ RESOLVED)
-- [ ] Test "Add to Cart" functionality
 - [ ] Configure payment provider (Stripe)
 - [ ] Set up shipping options
 - [ ] Configure tax rates
-- [ ] Configure file storage on Railway (currently returning localhost URLs)
 
 ### 🐛 Current Issues:
-- **⏳ Image Storage Configuration**
-  - Product images are uploading but may show `localhost:9000` URLs
-  - Backend needs S3/MinIO/file storage properly configured on Railway
-  - Workaround: Frontend fallback to `images[0].url` when `thumbnail` is null
-  - Action needed: Ensure Medusa file storage is configured for Railway environment
+- **✅ RESOLVED: Image Storage**
+  - File storage is properly configured with DigitalOcean Spaces
+  - Images served from: `https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/...`
+  - Frontend fallback to `images[0].url` when `thumbnail` is null (allows display even if thumbnail not set in Medusa)
 
 ### 📝 Notes:
 - Backend URL: `https://robert-gaunce-art-medusa-production.up.railway.app`
@@ -201,13 +200,13 @@ Once backend provides the publishable API key, we need to:
 
 ## 🔄 Next Steps
 
-**After Backend Setup is Complete:**
+**Integration Progress:**
 
 1. ✅ Step 1: Server API Routes (COMPLETED)
-2. 🎯 Step 2: Update Shop/Portfolio Pages to use the new composables
-3. 🎯 Step 3: Connect Cart Store for client-side cart operations
-4. 🎯 Step 4: Add product detail pages
-5. 🎯 Step 5: Implement checkout flow
+2. ✅ Step 2: Update Shop Pages to use composables (COMPLETED)
+3. ✅ Step 3: Connect Cart Store for client-side cart operations (COMPLETED)
+4. 🎯 Step 4: Add product detail pages (TODO)
+5. 🎯 Step 5: Implement checkout flow (TODO)
 
 ## 🐛 Testing Checklist
 
