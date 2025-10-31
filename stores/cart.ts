@@ -17,6 +17,17 @@ export const useCartStore = defineStore('cart', {
     },
     items: (state) => {
       return state.cart?.items || []
+    },
+    hasItems: (state) => {
+      return (state.cart?.items?.length || 0) > 0
+    },
+    formattedTotal: (state) => {
+      const total = state.cart?.total || 0
+      const currencyCode = state.cart?.region?.currency_code?.toUpperCase() || 'USD'
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: currencyCode
+      }).format(total / 100)
     }
   },
 
@@ -220,6 +231,120 @@ export const useCartStore = defineStore('cart', {
       this.cartId = null
       this.cart = null
       localStorage.removeItem('cart_id')
+    },
+
+    async createPaymentSession(): Promise<string> {
+      if (!this.cartId) {
+        throw new Error('Cart ID is required')
+      }
+
+      console.log('💳 [CART STORE] Creating payment session for cart:', this.cartId)
+      this.isLoading = true
+
+      try {
+        const { $medusa } = useNuxtApp()
+        const config = useRuntimeConfig()
+        const apiKey = config.public.medusaPublishableKey
+
+        if (!apiKey) {
+          throw new Error('Medusa publishable API key is not configured')
+        }
+
+        // Create payment session via Medusa API (direct fetch since SDK might not have this method)
+        const backendUrl = config.public.medusaBackendUrl?.replace(/\/$/, '')
+        
+        console.log('💳 [CART STORE] Creating payment session via Medusa API...')
+        const sessionResponse = await fetch(`${backendUrl}/store/payment-sessions`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-publishable-api-key': apiKey,
+          },
+          body: JSON.stringify({
+            cart_id: this.cartId,
+            provider_id: 'stripe'
+          })
+        })
+
+        if (!sessionResponse.ok) {
+          const errorText = await sessionResponse.text()
+          console.error('❌ [CART STORE] Payment session creation failed:', sessionResponse.status, errorText)
+          throw new Error(`Failed to create payment session: ${errorText}`)
+        }
+
+        const sessionData = await sessionResponse.json()
+        console.log('✅ [CART STORE] Payment session created:', sessionData.payment_session?.id)
+
+        // Retrieve payment collection to get client secret
+        const paymentCollectionId = sessionData.payment_session?.payment_collection_id
+        if (!paymentCollectionId) {
+          throw new Error('No payment collection ID in response')
+        }
+
+        console.log('💳 [CART STORE] Retrieving payment collection:', paymentCollectionId)
+        const collectionResponse = await fetch(`${backendUrl}/store/payment-collections/${paymentCollectionId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-publishable-api-key': apiKey,
+          }
+        })
+
+        if (!collectionResponse.ok) {
+          const errorText = await collectionResponse.text()
+          console.error('❌ [CART STORE] Payment collection retrieval failed:', collectionResponse.status, errorText)
+          throw new Error(`Failed to retrieve payment collection: ${errorText}`)
+        }
+
+        const collectionData = await collectionResponse.json()
+        const clientSecret = collectionData.payment_collection?.data?.client_secret
+
+        if (!clientSecret) {
+          throw new Error('No client secret in payment collection')
+        }
+
+        console.log('✅ [CART STORE] Client secret retrieved successfully')
+        return clientSecret
+
+      } catch (error: any) {
+        console.error('❌ [CART STORE] Error creating payment session:', error)
+        throw error
+      } finally {
+        this.isLoading = false
+      }
+    },
+
+    async completeCart() {
+      if (!this.cartId) {
+        throw new Error('Cart ID is required')
+      }
+
+      console.log('🛒 [CART STORE] Completing cart:', this.cartId)
+      this.isLoading = true
+
+      try {
+        const { $medusa } = useNuxtApp()
+        
+        // Complete the cart (create order)
+        const response = await $medusa.store.cart.complete(this.cartId)
+        
+        if (response.cart) {
+          console.log('✅ [CART STORE] Cart completed successfully')
+          console.log('✅ [CART STORE] Order created:', response.cart.order)
+          
+          // Clear cart after successful order
+          this.clearCart()
+          
+          return response.cart.order || response.cart
+        }
+
+        throw new Error('No order in response')
+      } catch (error: any) {
+        console.error('❌ [CART STORE] Error completing cart:', error)
+        throw error
+      } finally {
+        this.isLoading = false
+      }
     }
   }
 })

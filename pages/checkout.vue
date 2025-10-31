@@ -378,24 +378,19 @@ const handleShippingSubmit = async () => {
   }
 }
 
-// Create payment session via API
+// Create payment session via cart store (matches previous engineer's implementation)
 const createPaymentSession = async () => {
   try {
-    console.log('🔵 [CHECKOUT] Calling payment session API...')
+    console.log('🔵 [CHECKOUT] Creating payment session via cart store...')
     console.log('🔵 [CHECKOUT] Cart ID:', cartStore.cartId)
-    console.log('🔵 [CHECKOUT] Calling: /api/payments/create-session')
     
-    const response = await $fetch('/api/payments/create-session', {
-      method: 'POST',
-      body: {
-        cartId: cartStore.cartId
-      }
-    })
+    // Use cart store method (bypasses server API route 404 issue)
+    const clientSecretResult = await cartStore.createPaymentSession()
     
-    console.log('🔵 [CHECKOUT] Payment session response:', response)
+    console.log('🔵 [CHECKOUT] Payment session created, client secret received')
 
-    if (response.clientSecret) {
-      clientSecret.value = response.clientSecret
+    if (clientSecretResult) {
+      clientSecret.value = clientSecretResult
       await initializeStripe()
     } else {
       throw new Error('No client secret returned')
@@ -463,9 +458,17 @@ const handlePayment = async () => {
       console.error('Payment error:', error)
       alert(error.message || 'Payment failed. Please try again.')
     } else {
-      // Payment successful - clear cart and redirect
-      cartStore.clearCart()
-      navigateTo('/order-confirmation')
+      // Payment successful - complete cart (creates order) and redirect
+      console.log('✅ [CHECKOUT] Payment confirmed, completing cart...')
+      try {
+        await cartStore.completeCart()
+        console.log('✅ [CHECKOUT] Order created successfully')
+        navigateTo('/order-confirmation')
+      } catch (orderError) {
+        console.error('❌ [CHECKOUT] Error completing cart:', orderError)
+        // Still redirect even if order creation fails (payment was successful)
+        navigateTo('/order-confirmation')
+      }
     }
   } catch (error) {
     console.error('Payment error:', error)
