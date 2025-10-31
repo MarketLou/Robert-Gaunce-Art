@@ -381,12 +381,18 @@ const handleShippingSubmit = async () => {
 // Create payment session via API
 const createPaymentSession = async () => {
   try {
+    console.log('🔵 [CHECKOUT] Calling payment session API...')
+    console.log('🔵 [CHECKOUT] Cart ID:', cartStore.cartId)
+    console.log('🔵 [CHECKOUT] Calling: /api/payments/create-session')
+    
     const response = await $fetch('/api/payments/create-session', {
       method: 'POST',
       body: {
         cartId: cartStore.cartId
       }
     })
+    
+    console.log('🔵 [CHECKOUT] Payment session response:', response)
 
     if (response.clientSecret) {
       clientSecret.value = response.clientSecret

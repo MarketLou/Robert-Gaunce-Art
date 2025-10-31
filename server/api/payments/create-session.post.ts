@@ -3,6 +3,9 @@
  * This runs on the Nuxt server to create a payment session with Medusa
  */
 export default defineEventHandler(async (event) => {
+  console.log('💳 [PAYMENT API] Route handler called!')
+  console.log('💳 [PAYMENT API] Method:', event.method)
+  console.log('💳 [PAYMENT API] URL:', event.node.req.url)
   console.log('💳 [PAYMENT API] Creating payment session...')
 
   try {

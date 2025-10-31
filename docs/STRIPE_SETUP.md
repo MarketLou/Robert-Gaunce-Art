@@ -339,12 +339,27 @@ localStorage.removeItem('cart_id');
 ### ⏳ IN PROGRESS: Payment Session API Route 404
 **Issue:** `POST /api/payments/create-session` returning 404  
 **Possible Causes:**
-- Vercel hasn't rebuilt with the new route yet
+- Vercel build issue - route not being registered
 - Build cache issue on Vercel
-- Route file not included in deployment
+- Route file not included in Nitro build
+- Vercel-specific routing configuration needed
 
-**Solution:** 
-- Wait for Vercel to complete rebuild (check Vercel dashboard)
-- Try triggering a new deployment
-- Verify route exists at `server/api/payments/create-session.post.ts`
+**Current Status:**
+- ✅ Route file exists and is committed: `server/api/payments/create-session.post.ts`
+- ✅ No syntax errors in route file
+- ✅ Route structure matches working routes (`/api/products`)
+- ❌ Route returning 404 on Vercel (production)
+- ❓ **Check Vercel build logs** to see if route is being registered
+
+**Solution Steps:**
+1. **Check Vercel Build Logs:** Look for errors about route registration or Nitro build issues
+2. **Verify Route is in Build:** Check if `create-session.post.ts` is being processed during build
+3. **Try Manual Rebuild:** Trigger a new deployment from Vercel dashboard
+4. **Check Nitro Output:** If possible, verify `.output` directory includes the route
+5. **Alternative:** Consider using Medusa SDK directly (less secure, but might work as workaround)
+
+**Next Steps:**
+- Check Vercel deployment logs for the latest build
+- Verify the route appears in the Nitro router
+- Try triggering a fresh deployment
 
