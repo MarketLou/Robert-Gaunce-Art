@@ -1,529 +1,179 @@
-DEI3wy_L.js:45 🔧 Medusa Plugin Initialized
-DEI3wy_L.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
-DEI3wy_L.js:45 🔑 Publishable Key: ✅ Set
-DEI3wy_L.js:45 🔍 Medusa SDK object: $b
-DEI3wy_L.js:45 🔍 Available properties: Array(4)
-DEI3wy_L.js:45 🔍 Has .store? true
-DEI3wy_L.js:45 🔍 Has .carts? false
-DEI3wy_L.js:45 🔍 Has .cart? false
-DEI3wy_L.js:45 🔍 store properties: Array(10)
-DEI3wy_L.js:45 🔍 Has store.cart? true
-DEI3wy_L.js:45 🔍 store.cart properties: Array(9)
-DKBf-XsF.js:1 🟦 [SHOP PAGE] Initializing shop page
-DKBf-XsF.js:1 🔶 [COMPOSABLE] useProducts called
-DKBf-XsF.js:1 📊 [COMPOSABLE] Returning products: 0
-DKBf-XsF.js:1 🛒 [CART STORE] Initializing cart...
-DKBf-XsF.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VRSP7HD5VCFQ4GXX92N76N
-DKBf-XsF.js:1 🛒 [CART STORE] Retrieving existing cart...
-DKBf-XsF.js:1 ✅ [CART STORE] Cart retrieved successfully
-DKBf-XsF.js:1 🔄 [COMPOSABLE] Transforming response: Object
-DKBf-XsF.js:1 🔄 [COMPOSABLE] Products count: 1
-DKBf-XsF.js:1 👀 [COMPOSABLE] Data changed: Object
-DKBf-XsF.js:1 👀 [COMPOSABLE] Products in data: 1
-DKBf-XsF.js:1 📊 [COMPOSABLE] Returning products: 1
-DKBf-XsF.js:1 🛍️ [SHOP PAGE] Products updated: 1
-DKBf-XsF.js:1 🛍️ [SHOP PAGE] Products data: Array(1)
-DKBf-XsF.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
-DKBf-XsF.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
-DKBf-XsF.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
-DKBf-XsF.js:1 🖼️ [SHOP PAGE] - Full product: Object
-DKBf-XsF.js:1 ⏳ [COMPOSABLE] Pending status: false
-DKBf-XsF.js:1 🛍️ [SHOP PAGE] Loading state: false
-DKBf-XsF.js:1 🛒 [CART STORE] Adding item to cart: Object
-DKBf-XsF.js:1 🛒 [CART STORE] Calling store.cart.lineItems.create() cart_01K8VRSP7HD5VCFQ4GXX92N76N
-DKBf-XsF.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.addItem (DKBf-XsF.js:1:16537)
-    at Proxy.$ (DEI3wy_L.js:23:2323)
-    at n (DKBf-XsF.js:1:24443)
-    at onClick (DKBf-XsF.js:1:26425)
-    at si (DEI3wy_L.js:14:38)
-    at Ot (DEI3wy_L.js:14:109)
-    at HTMLButtonElement.n (DEI3wy_L.js:19:7246)
-addItem @ DKBf-XsF.js:1
-DKBf-XsF.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'create')
-    at Proxy.addItem (DKBf-XsF.js:1:16537)
-    at Proxy.$ (DEI3wy_L.js:23:2323)
-    at n (DKBf-XsF.js:1:24443)
-    at onClick (DKBf-XsF.js:1:26425)
-    at si (DEI3wy_L.js:14:38)
-    at Ot (DEI3wy_L.js:14:109)
-    at HTMLButtonElement.n (DEI3wy_L.js:19:7246)
-n @ DKBf-XsF.js:1
-
-
-
-
-
-
-
-
-
-
-
-<template>
-  <div class="cart-sidebar-overlay" :class="{ 'open': cartStore.isCartOpen }" @click="closeCart">
-    <div class="cart-sidebar" :class="{ 'open': cartStore.isCartOpen }" @click.stop>
-      <!-- Cart Header -->
-      <div class="cart-header">
-        <h2>Shopping Cart</h2>
-        <button class="close-cart-btn" @click="closeCart" aria-label="Close cart">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Cart Content -->
-      <div class="cart-content">
-        <!-- Empty Cart State -->
-        <div v-if="!cartStore.hasItems" class="empty-cart">
-          <div class="empty-cart-icon">🛒</div>
-          <h3>Your cart is empty</h3>
-          <p>Add some products to get started!</p>
-          <button class="continue-shopping-btn" @click="closeCart">
-            Continue Shopping
-          </button>
-        </div>
-
-        <!-- Cart With Items -->
-        <div v-else class="cart-with-items">
-          <!-- Progress Steps -->
-          <div class="progress-steps">
-            <div class="step" :class="{ 'active': currentStep >= 1, 'completed': currentStep > 1 }">
-              <span class="step-number">1</span>
-              <span class="step-label">Items</span>
-            </div>
-            <div class="step" :class="{ 'active': currentStep >= 2, 'completed': currentStep > 2 }">
-              <span class="step-number">2</span>
-              <span class="step-label">Info</span>
-            </div>
-            <div class="step" :class="{ 'active': currentStep >= 3 }">
-              <span class="step-number">3</span>
-              <span class="step-label">Payment</span>
-            </div>
-          </div>
-
-          <!-- Step Content -->
-          <div class="step-content">
-            <!-- Step 1: Cart Items -->
-            <div v-if="currentStep === 1" class="cart-step">
-              <CartItems />
-              
-              <div class="step-actions">
-                <button class="continue-btn" @click="goToNextStep" :disabled="!cartStore.hasItems">
-                  Continue to Information
-                </button>
-              </div>
-            </div>
-
-            <!-- Step 2: Customer & Vehicle Information -->
-            <div v-if="currentStep === 2" class="cart-step">
-              <div class="info-forms">
-                <CustomerInfo @update-customer-info="updateCustomerInfo" />
-                
-                <!-- Vehicle Info (only show for automotive products) -->
-                <VehicleInfo 
-                  v-if="hasAutomotiveProducts" 
-                  @update-vehicle-info="updateVehicleInfo" 
-                />
-              </div>
-              
-              <div class="step-actions">
-                <button class="back-btn" @click="goToPreviousStep">
-                  Back to Cart
-                </button>
-                <button class="continue-btn" @click="goToNextStep" :disabled="!isInfoComplete">
-                  Continue to Payment
-                </button>
-              </div>
-            </div>
-
-            <!-- Step 3: Payment -->
-            <div v-if="currentStep === 3" class="cart-step">
-              <PaymentInfo />
-              
-              <div class="step-actions">
-                <button class="back-btn" @click="goToPreviousStep">
-                  Back to Information
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { ref, computed, watch } from 'vue'
-import { useCartStore } from '~/store/cart'
-import CartItems from '~/components/cart/CartItems.vue'
-import CustomerInfo from '~/components/cart/CustomerInfo.vue'
-import VehicleInfo from '~/components/cart/VehicleInfo.vue'
-import PaymentInfo from '~/components/cart/PaymentInfo.vue'
-
-const cartStore = useCartStore()
-
-// Current step in the checkout process
-const currentStep = ref(1)
-
-// Customer and vehicle information
-const customerInfo = ref({})
-const vehicleInfo = ref({})
-
-// Computed properties
-const hasAutomotiveProducts = computed(() => {
-  if (!cartStore.hasItems) return false
-  
-  const automotiveKeywords = ['car', 'vehicle', 'auto', 'wrap', 'decal', 'magnetic']
-  return cartStore.cart.items.some(item => {
-    const title = (item.title || item.variant?.product?.title || '').toLowerCase()
-    return automotiveKeywords.some(keyword => title.includes(keyword))
-  })
-})
-
-const isInfoComplete = computed(() => {
-  const hasCustomerInfo = customerInfo.value.name && customerInfo.value.email && customerInfo.value.phone
-  const hasVehicleInfo = !hasAutomotiveProducts.value || 
-    (vehicleInfo.value.year && vehicleInfo.value.make && vehicleInfo.value.model)
-  
-  return hasCustomerInfo && hasVehicleInfo
-})
-
-// Methods
-const closeCart = () => {
-  cartStore.toggleCart()
-  // Reset to step 1 when closing
-  setTimeout(() => {
-    currentStep.value = 1
-  }, 300)
-}
-
-const goToNextStep = () => {
-  if (currentStep.value < 3) {
-    currentStep.value++
-  }
-}
-
-const goToPreviousStep = () => {
-  if (currentStep.value > 1) {
-    currentStep.value--
-  }
-}
-
-const updateCustomerInfo = (info) => {
-  customerInfo.value = { ...info }
-  console.log('[CART-SIDEBAR] Customer info updated:', customerInfo.value)
-}
-
-const updateVehicleInfo = (info) => {
-  vehicleInfo.value = { ...info }
-  console.log('[CART-SIDEBAR] Vehicle info updated:', vehicleInfo.value)
-}
-
-// Watch for cart changes to reset step if cart becomes empty
-watch(() => cartStore.hasItems, (hasItems) => {
-  if (!hasItems && currentStep.value > 1) {
-    currentStep.value = 1
-  }
-})
-</script>
-
-<style scoped>
-.cart-sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1500;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.cart-sidebar-overlay.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.cart-sidebar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  max-width: 500px;
-  height: 100%;
-  background: white;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  z-index: 1501;
-}
-
-.cart-sidebar.open {
-  transform: translateX(0);
-}
-
-/* Cart Header */
-.cart-header {
-  padding: 1.5rem;
-  border-bottom: 1px solid #e5e5e5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f8f9fa;
-}
-
-.cart-header h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #161D2D;
-}
-
-.close-cart-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.close-cart-btn:hover {
-  background: #e9ecef;
-}
-
-/* Cart Content */
-.cart-content {
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Empty Cart */
-.empty-cart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 2rem;
-  text-align: center;
-  flex: 1;
-}
-
-.empty-cart-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
-
-.empty-cart h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.empty-cart p {
-  margin: 0 0 2rem 0;
-  color: #666;
-  font-size: 1rem;
-}
-
-.continue-shopping-btn {
-  background: #004dff;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.continue-shopping-btn:hover {
-  background: #0040d9;
-}
-
-/* Cart with Items */
-.cart-with-items {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* Progress Steps */
-.progress-steps {
-  display: flex;
-  justify-content: space-between;
-  padding: 1.5rem 2rem;
-  background: #f8f9fa;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-  position: relative;
-}
-
-.step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 15px;
-  right: -50%;
-  width: 100%;
-  height: 2px;
-  background: #e5e5e5;
-  z-index: 1;
-}
-
-.step.completed:not(:last-child)::after {
-  background: #004dff;
-}
-
-.step-number {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #e5e5e5;
-  color: #666;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 0.9rem;
-  position: relative;
-  z-index: 2;
-}
-
-.step.active .step-number {
-  background: #004dff;
-  color: white;
-}
-
-.step.completed .step-number {
-  background: #28a745;
-  color: white;
-}
-
-.step-label {
-  font-size: 0.8rem;
-  color: #666;
-  font-weight: 500;
-}
-
-.step.active .step-label {
-  color: #004dff;
-  font-weight: 600;
-}
-
-/* Step Content */
-.step-content {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.cart-step {
-  padding: 1.5rem 2rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.info-forms {
-  flex: 1;
-  overflow-y: auto;
-}
-
-/* Step Actions */
-.step-actions {
-  padding: 1.5rem 0 0 0;
-  margin-top: auto;
-  border-top: 1px solid #e5e5e5;
-  display: flex;
-  gap: 1rem;
-}
-
-.back-btn,
-.continue-btn {
-  flex: 1;
-  padding: 1rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.back-btn {
-  background: #f8f9fa;
-  color: #666;
-  border: 1px solid #e5e5e5;
-}
-
-.back-btn:hover {
-  background: #e9ecef;
-}
-
-.continue-btn {
-  background: #004dff;
-  color: white;
-}
-
-.continue-btn:hover:not(:disabled) {
-  background: #0040d9;
-}
-
-.continue-btn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .cart-sidebar {
-    max-width: 100%;
-  }
-  
-  .progress-steps {
-    padding: 1rem;
-  }
-  
-  .step-number {
-    width: 25px;
-    height: 25px;
-    font-size: 0.8rem;
-  }
-  
-  .step-label {
-    font-size: 0.7rem;
-  }
-  
-  .cart-step {
-    padding: 1rem;
-  }
-  
-  .step-actions {
-    flex-direction: column;
-  }
-  
-  .back-btn,
-  .continue-btn {
-    width: 100%;
-  }
-}
-</style> 
+CZJ1TU-W.js:45 🔧 Medusa Plugin Initialized
+CZJ1TU-W.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
+CZJ1TU-W.js:45 🔑 Publishable Key: ✅ Set
+CZJ1TU-W.js:45 🔍 Medusa SDK object: $b {client: Xw, admin: Rb, store: Ab, auth: xb}
+CZJ1TU-W.js:45 🔍 Available properties: (4) ['client', 'admin', 'store', 'auth']
+CZJ1TU-W.js:45 🔍 Has .store? true
+CZJ1TU-W.js:45 🔍 Has .carts? false
+CZJ1TU-W.js:45 🔍 Has .cart? false
+CZJ1TU-W.js:45 🔍 store properties: (10) ['region', 'collection', 'category', 'product', 'cart', 'fulfillment', 'payment', 'order', 'customer', 'client']
+CZJ1TU-W.js:45 🔍 Has store.cart? true
+CZJ1TU-W.js:45 🔍 store.cart properties: (9) ['create', 'update', 'retrieve', 'createLineItem', 'updateLineItem', 'deleteLineItem', 'addShippingMethod', 'complete', 'transferCart']
+CZJ1TU-W.js:45 🔍 Has store.cart.lineItems? false
+CZJ1TU-W.js:45 🔍 Full store.cart object: {create: ƒ, update: ƒ, retrieve: ƒ, createLineItem: ƒ, updateLineItem: ƒ, …}
+Dkpj7tT2.js:1 🟦 [SHOP PAGE] Initializing shop page
+Dkpj7tT2.js:1 🔶 [COMPOSABLE] useProducts called
+Dkpj7tT2.js:1 📊 [COMPOSABLE] Returning products: 0
+CZJ1TU-W.js:14 Hydration completed but contains mismatches.
+Vn @ CZJ1TU-W.js:14
+_ @ CZJ1TU-W.js:15
+$ @ CZJ1TU-W.js:14
+f @ CZJ1TU-W.js:14
+d @ CZJ1TU-W.js:15
+h @ CZJ1TU-W.js:14
+f @ CZJ1TU-W.js:14
+d @ CZJ1TU-W.js:15
+h @ CZJ1TU-W.js:14
+f @ CZJ1TU-W.js:14
+d @ CZJ1TU-W.js:15
+h @ CZJ1TU-W.js:14
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+wm @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+d @ CZJ1TU-W.js:15
+m @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+d @ CZJ1TU-W.js:15
+h @ CZJ1TU-W.js:14
+f @ CZJ1TU-W.js:14
+d @ CZJ1TU-W.js:15
+h @ CZJ1TU-W.js:14
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+g @ CZJ1TU-W.js:15
+__asyncHydrate @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+(anonymous) @ CZJ1TU-W.js:15
+Promise.then
+registerDep @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+wm @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+wm @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+tt @ CZJ1TU-W.js:15
+q @ CZJ1TU-W.js:15
+run @ CZJ1TU-W.js:10
+G @ CZJ1TU-W.js:15
+Q @ CZJ1TU-W.js:15
+f @ CZJ1TU-W.js:14
+a @ CZJ1TU-W.js:14
+mount @ CZJ1TU-W.js:15
+t.mount @ CZJ1TU-W.js:19
+qu @ CZJ1TU-W.js:47
+await in qu
+(anonymous) @ CZJ1TU-W.js:47
+Dkpj7tT2.js:1 ⏳ [COMPOSABLE] Pending status: true
+Dkpj7tT2.js:1 🛍️ [SHOP PAGE] Loading state: true
+Dkpj7tT2.js:1 🛒 [CART STORE] Initializing cart...
+Dkpj7tT2.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VRSP7HD5VCFQ4GXX92N76N
+Dkpj7tT2.js:1 🛒 [CART STORE] Retrieving existing cart...
+Dkpj7tT2.js:1 🔄 [COMPOSABLE] Transforming response: {products: Array(2), count: 2}
+Dkpj7tT2.js:1 🔄 [COMPOSABLE] Products count: 2
+Dkpj7tT2.js:1 👀 [COMPOSABLE] Data changed: {products: Array(2), count: 2}
+Dkpj7tT2.js:1 👀 [COMPOSABLE] Products in data: 2
+Dkpj7tT2.js:1 📊 [COMPOSABLE] Returning products: 2
+Dkpj7tT2.js:1 🛍️ [SHOP PAGE] Products updated: 2
+Dkpj7tT2.js:1 🛍️ [SHOP PAGE] Products data: (2) [{…}, {…}]
+Dkpj7tT2.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
+Dkpj7tT2.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
+Dkpj7tT2.js:1 🖼️ [SHOP PAGE] - Images: [{…}]
+Dkpj7tT2.js:1 🖼️ [SHOP PAGE] - Full product: {id: 'prod_01K8VH27686FDD4M96XY8P7J7C', title: 'test', subtitle: '', description: 'watercolor', handle: 'test', …}
+Dkpj7tT2.js:1 🖼️ [SHOP PAGE] Product 2 - "Forest"
+Dkpj7tT2.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Hero-01K8VRYVQ82E278NPFQZJ6FDJF.jpg
+Dkpj7tT2.js:1 🖼️ [SHOP PAGE] - Images: [{…}]
+Dkpj7tT2.js:1 🖼️ [SHOP PAGE] - Full product: {id: 'prod_01K8VRYWG0GZXJ8BBFJT2J977Z', title: 'Forest', subtitle: 'Watercolor', description: 'Forest Watercolor', handle: 'forest', …}
+Dkpj7tT2.js:1 ⏳ [COMPOSABLE] Pending status: false
+Dkpj7tT2.js:1 🛍️ [SHOP PAGE] Loading state: false
+Dkpj7tT2.js:1 ✅ [CART STORE] Cart retrieved successfully
+Dkpj7tT2.js:1 🛒 [CART STORE] Adding item to cart: {variantId: 'variant_01K8VRYWHY2MYTX4TY9GCXBZVE', quantity: 1}
+Dkpj7tT2.js:1 🛒 [CART STORE] Cart object: {create: ƒ, update: ƒ, retrieve: ƒ, createLineItem: ƒ, updateLineItem: ƒ, …}
+Dkpj7tT2.js:1 🛒 [CART STORE] Cart object keys: (9) ['create', 'update', 'retrieve', 'createLineItem', 'updateLineItem', 'deleteLineItem', 'addShippingMethod', 'complete', 'transferCart']
+Dkpj7tT2.js:1 🛒 [CART STORE] Has lineItems? false
+Dkpj7tT2.js:1 🛒 [CART STORE] Calling store.cart.lineItems.create() cart_01K8VRSP7HD5VCFQ4GXX92N76N
+Dkpj7tT2.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.addItem (Dkpj7tT2.js:1:16847)
+    at Proxy.$ (CZJ1TU-W.js:23:2323)
+    at n (Dkpj7tT2.js:1:24753)
+    at onClick (Dkpj7tT2.js:1:26735)
+    at si (CZJ1TU-W.js:14:38)
+    at Ot (CZJ1TU-W.js:14:109)
+    at HTMLButtonElement.n (CZJ1TU-W.js:19:7246)
+addItem @ Dkpj7tT2.js:1
+$ @ CZJ1TU-W.js:23
+n @ Dkpj7tT2.js:1
+onClick @ Dkpj7tT2.js:1
+si @ CZJ1TU-W.js:14
+Ot @ CZJ1TU-W.js:14
+n @ CZJ1TU-W.js:19
+Dkpj7tT2.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.addItem (Dkpj7tT2.js:1:16847)
+    at Proxy.$ (CZJ1TU-W.js:23:2323)
+    at n (Dkpj7tT2.js:1:24753)
+    at onClick (Dkpj7tT2.js:1:26735)
+    at si (CZJ1TU-W.js:14:38)
+    at Ot (CZJ1TU-W.js:14:109)
+    at HTMLButtonElement.n (CZJ1TU-W.js:19:7246)
+n @ Dkpj7tT2.js:1
+await in n
+onClick @ Dkpj7tT2.js:1
+si @ CZJ1TU-W.js:14
+Ot @ CZJ1TU-W.js:14
+n @ CZJ1TU-W.js:19

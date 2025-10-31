@@ -98,14 +98,8 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        console.log('🛒 [CART STORE] Cart object:', $medusa.store.cart)
-        console.log('🛒 [CART STORE] Cart object keys:', Object.keys($medusa.store.cart))
-        console.log('🛒 [CART STORE] Has lineItems?', !!$medusa.store.cart.lineItems)
-        if ($medusa.store.cart.lineItems) {
-          console.log('🛒 [CART STORE] lineItems keys:', Object.keys($medusa.store.cart.lineItems))
-        }
-        console.log('🛒 [CART STORE] Calling store.cart.lineItems.create()', this.cartId)
-        const response = await $medusa.store.cart.lineItems.create(this.cartId, {
+        console.log('🛒 [CART STORE] Calling store.cart.createLineItem()', this.cartId)
+        const response = await $medusa.store.cart.createLineItem(this.cartId, {
           variant_id: variantId,
           quantity
         })
@@ -131,7 +125,7 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        const response = await $medusa.store.cart.lineItems.delete(this.cartId, itemId)
+        const response = await $medusa.store.cart.deleteLineItem(this.cartId, itemId)
         
         if (response.cart) {
           this.cart = response.cart
@@ -150,7 +144,7 @@ export const useCartStore = defineStore('cart', {
       this.isLoading = true
       try {
         const { $medusa } = useNuxtApp()
-        const response = await $medusa.store.cart.lineItems.update(this.cartId, itemId, {
+        const response = await $medusa.store.cart.updateLineItem(this.cartId, itemId, {
           quantity
         })
         
