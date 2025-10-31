@@ -159,6 +159,25 @@ export const useCartStore = defineStore('cart', {
       }
     },
 
+    async updateCart(updates: { shipping_address?: any, email?: string }) {
+      if (!this.cartId) return
+
+      this.isLoading = true
+      try {
+        const { $medusa } = useNuxtApp()
+        const response = await $medusa.store.cart.update(this.cartId, updates)
+        
+        if (response.cart) {
+          this.cart = response.cart
+        }
+      } catch (error) {
+        console.error('Failed to update cart', error)
+        throw error
+      } finally {
+        this.isLoading = false
+      }
+    },
+
     clearCart() {
       this.cartId = null
       this.cart = null

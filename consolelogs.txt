@@ -1,409 +1,283 @@
-# Stripe Payment Integration Help Guide
-
-## 🚨 **MISSING COMPONENT ISSUE**
-
-The screenshot shows the cart is working, but the **Stripe payment component is not visible**. This component should appear below the cart items when there are products in the cart.
-
-## 📝 **EXACT COMPONENT NAME**
-
-The missing component is: **`components/cart/PaymentInfo.vue`**
-
-This component should have been copied from the original project. If it's missing, **FLAG ME DOWN IN ALL CAPS** - you'll need the complete component code.
-
-## 🔧 **Required Dependencies**
-
-Make sure these are installed in `package.json`:
-
-```json
-{
-  "dependencies": {
-    "@stripe/stripe-js": "^2.4.0",
-    "@stripe/vue-stripe-js": "^1.0.7"
-  }
-}
-```
-
-If these are not installed, run:
-```bash
-npm install @stripe/stripe-js @stripe/vue-stripe-js
-```
-
-## 🔑 **Stripe Configuration Requirements**
-
-### 1. **Environment Variables Needed**
-Create a `.env` file with your Stripe keys:
-
-```env
-STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
-STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key_here
-```
-
-⚠️ **IF YOU DON'T HAVE STRIPE KEYS, FLAG ME DOWN IN ALL CAPS** - you'll need to set up a Stripe account.
-
-### 2. **Nuxt Configuration**
-Add to your `nuxt.config.ts`:
-
-```typescript
-export default defineNuxtConfig({
-  runtimeConfig: {
-    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
-    public: {
-      stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY
-    }
-  }
-})
-```
-
-## 🧩 **How PaymentInfo.vue Should Integrate**
-
-### **In CartSidebar.vue, verify this line exists:**
-
-```vue
-<template>
-  <div class="cart-sidebar">
-    <!-- ... other cart content ... -->
-    
-    <!-- Customer Information Form -->
-    <CustomerInfo @update-customer-info="handleCustomerUpdate" />
-
-    <!-- Vehicle Information Form -->
-    <VehicleInfo @update-vehicle-info="handleVehicleUpdate" />
-
-    <!-- THIS LINE MUST BE PRESENT: -->
-    <PaymentInfo v-if="cartStore.hasItems" />
-    
-  </div>
-</template>
-```
-
-### **Import Statement Required:**
-```vue
-<script setup>
-import PaymentInfo from '~/components/cart/PaymentInfo.vue';
-// ... other imports
-</script>
-```
-
-## 🛠 **Troubleshooting Checklist**
-
-### **Issue 1: Component Not Showing**
-**Check these in order:**
-
-1. ✅ **File exists**: `components/cart/PaymentInfo.vue` exists in project
-2. ✅ **Import added**: PaymentInfo is imported in CartSidebar.vue
-3. ✅ **Template includes**: `<PaymentInfo v-if="cartStore.hasItems" />` exists
-4. ✅ **Items in cart**: Cart actually has items (cartStore.hasItems returns true)
-
-### **Issue 2: Stripe Not Loading**
-**Check these:**
-
-1. ✅ **Dependencies installed**: @stripe/stripe-js and @stripe/vue-stripe-js
-2. ✅ **Environment variables**: STRIPE_PUBLISHABLE_KEY is set
-3. ✅ **Nuxt config**: runtimeConfig includes Stripe keys
-4. ✅ **Console errors**: Check browser console for Stripe-related errors
-
-### **Issue 3: Payment Not Processing**
-**Check these:**
-
-1. ✅ **Medusa backend**: Payment provider configured for Stripe
-2. ✅ **Cart metadata**: Customer and vehicle info properly saved
-3. ✅ **Shipping method**: Auto-pickup shipping method added
-4. ✅ **Payment session**: Stripe payment session created successfully
-
-## 📋 **Complete PaymentInfo.vue Component Structure**
-
-**IF THE COMPONENT IS MISSING, FLAG ME DOWN IN ALL CAPS**
-
-The component should include:
-- Stripe Elements integration
-- Credit card input fields
-- Payment processing logic
-- Error handling
-- Loading states
-- Integration with cart store
-
-## 🔗 **Integration with Cart Store**
-
-The PaymentInfo component uses these cart store methods:
-
-```javascript
-// These methods MUST exist in store/cart.js:
-- cartStore.createPaymentSession()
-- cartStore.completeCart() 
-- cartStore.updateCartDetails()
-- cartStore.hasItems (getter)
-- cartStore.formattedTotal (getter)
-```
-
-**IF ANY OF THESE ARE MISSING FROM YOUR CART STORE, FLAG ME DOWN IN ALL CAPS**
-
-## 🚨 **Critical Requirements Checklist**
-
-Before the payment component will work, verify ALL of these:
-
-### **Backend Requirements:**
-- [ ] Medusa backend has Stripe payment provider configured
-- [ ] Payment provider ID matches in cart store: `'pp_stripe_stripe'`
-- [ ] Shipping methods are set up (pickup option)
-- [ ] Sales channel is properly configured
-
-**IF ANY BACKEND ITEMS ARE NOT SET UP, FLAG ME DOWN IN ALL CAPS**
-
-### **Frontend Requirements:**
-- [ ] PaymentInfo.vue component exists
-- [ ] Stripe dependencies installed
-- [ ] Environment variables configured
-- [ ] Component imported in CartSidebar.vue
-- [ ] Template includes PaymentInfo component
-
-### **Cart State Requirements:**
-- [ ] Cart has items (cartStore.hasItems = true)
-- [ ] Customer info collected and saved
-- [ ] Vehicle info collected and saved
-- [ ] Shipping method added to cart
-
-## 🔍 **Debugging Steps**
-
-### **Step 1: Check Component Visibility**
-Open browser dev tools and check if PaymentInfo component is in the DOM:
-
-```javascript
-// In browser console:
-console.log('Cart has items:', cartStore.hasItems)
-console.log('PaymentInfo element:', document.querySelector('[data-component="payment-info"]'))
-```
-
-### **Step 2: Check Cart Store State**
-```javascript
-// In browser console:
-console.log('Cart store state:', cartStore.cart)
-console.log('Customer info:', cartStore.cart?.email)
-console.log('Shipping method:', cartStore.cart?.shipping_methods)
-```
-
-### **Step 3: Check Stripe Loading**
-```javascript
-// In browser console:
-console.log('Stripe object:', window.Stripe)
-```
-
-## 🚨 **WHEN TO FLAG FOR HELP**
-
-**FLAG ME DOWN IN ALL CAPS IF:**
-
-1. ❌ **PaymentInfo.vue component file is completely missing**
-2. ❌ **You don't have Stripe API keys (need to create Stripe account)**
-3. ❌ **Medusa backend doesn't have Stripe configured**
-4. ❌ **Cart store is missing payment-related methods**
-5. ❌ **Component exists but shows console errors you can't resolve**
-6. ❌ **Payment processing starts but fails with backend errors**
-
-## 💡 **Quick Fix Attempts**
-
-Try these first before flagging for help:
-
-### **Fix 1: Force Component Visibility**
-Temporarily remove the `v-if` condition:
-```vue
-<!-- Change this: -->
-<PaymentInfo v-if="cartStore.hasItems" />
-
-<!-- To this for testing: -->
-<PaymentInfo />
-```
-
-### **Fix 2: Check Component Import**
-Make sure import path is correct:
-```vue
-<script setup>
-import PaymentInfo from '~/components/cart/PaymentInfo.vue'
-// NOT: import PaymentInfo from './cart/PaymentInfo.vue'
-</script>
-```
-
-### **Fix 3: Verify Cart Items**
-Add debug info to see cart state:
-```vue
-<template>
-  <div>
-    <p>Debug: Has items = {{ cartStore.hasItems }}</p>
-    <p>Debug: Item count = {{ cartStore.itemCount }}</p>
-    <PaymentInfo v-if="cartStore.hasItems" />
-  </div>
-</template>
-```
-
-## 🎯 **Expected Final Result**
-
-When working correctly, the cart sidebar should show:
-
-1. **Cart Items** (✅ Working - visible in screenshot)
-2. **Customer Info Form** (❓ Should be visible)
-3. **Vehicle Info Form** (❓ Should be visible) 
-4. **Payment Info Form** (❌ Missing - this is the problem)
-
-The Payment Info section should include:
-- Credit card number field
-- Expiry date field
-- CVC field
-- Cardholder name field
-- "Process Payment" button
-- Total amount display
-
-**IF THE PAYMENT SECTION IS STILL NOT VISIBLE AFTER FOLLOWING THIS GUIDE, FLAG ME DOWN IN ALL CAPS WITH THE SPECIFIC ERROR OR ISSUE YOU'RE SEEING.** 
-
-
-
-
-
-# 🆘 Stripe Payment Integration Assistance Request
-
-**Date**: January 8, 2025  
-**Project**: Xclusive Digital Print Solutions  
-**Issue**: Stripe Payment Form Failing to Initialize  
-**Context**: Migrating working cart implementation to new page layout
-
----
-
-## 🚨 **CURRENT PROBLEM**
-
-### **Issue**: "Failed to initialize payment form"
-The Stripe payment form is not loading on the frontend, showing this error message in Step 3 of our checkout process. However, we can see that the **backend is working correctly**.
-
-### **What We're Seeing:**
-
-**✅ BACKEND (Railway) - WORKING:**
-```
-Authenticating route POST /store/payment-collections
-Authenticating route POST /store/payment-collections/pay_col_01JZNJ0C6DDN33C47BMVVPG1T5/payment-sessions
-Processing payment.webhook_received which has 1 subscribers
-```
-
-**❌ FRONTEND - FAILING:**
-- Payment form shows "Failed to initialize payment form" 
-- Stripe element container renders but Stripe SDK fails to load payment form
-- "Retry" button doesn't resolve the issue
-
----
-
-## 📋 **CONTEXT & BACKGROUND**
-
-### **What We Know Works:**
-- ✅ **Same Railway backend setup** (Medusa + Stripe integration)
-- ✅ **Backend payment session creation** (logs confirm success)
-- ✅ **3-step cart checkout flow** (Items → Customer Info → Payment)
-- ✅ **This exact setup worked before** on different page implementation
-
-### **What Changed:**
-- 🔄 **Migrated cart code** from previous working implementation to new page layout
-- 🔄 **Same codebase, same Railway backend** - just reorganized frontend structure
-- 🔄 **Unified cart implementation** (removed dual cart systems)
-
----
-
-## 🔍 **TECHNICAL DETAILS**
-
-### **Current Frontend Configuration:**
-
-**Nuxt Config (`nuxt.config.ts`):**
-```typescript
-runtimeConfig: {
-  public: {
-    stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY
-  }
-},
-nitro: {
-  devProxy: {
-    '/api/medusa': {
-      target: 'https://xclusive-medusa-production.up.railway.app',
-      changeOrigin: true,
-      prependPath: false,
-      ws: false,
-      rewrite: (path: string) => path.replace(/^\/api\/medusa/, '')
-    }
-  }
-}
-```
-
-**Payment Component Logic:**
-```javascript
-// PaymentInfo.vue initialization
-const config = useRuntimeConfig()
-const STRIPE_PUBLISHABLE_KEY = config.public.stripePublishableKey
-
-// This is where it's failing:
-stripe.value = await loadStripe(STRIPE_PUBLISHABLE_KEY)
-```
-
-**Cart Store Integration:**
-```javascript
-// Cart store creates payment session successfully
-clientSecret.value = await cartStore.createPaymentSession()
-// ✅ This works - we see the backend logs
-```
-
----
-
-## ❓ **QUESTIONS FOR ORIGINAL PROJECT OWNER**
-
-### **1. Environment Variables & Keys**
-- **Where did you configure the `STRIPE_PUBLISHABLE_KEY`?** 
-  - Railway environment variables?
-  - Different configuration method?
-  - Was there a specific way you set up the Stripe keys for production?
-
-### **2. Frontend-Backend Communication**
-- **How did you configure the frontend to communicate with Railway?**
-  - Did you use the same Nitro proxy setup?
-  - Any special Railway deployment configuration needed?
-  - Were there additional environment variables required?
-
-### **3. Stripe SDK Configuration**
-- **Did you encounter this "Failed to initialize payment form" issue?**
-  - How did you resolve it?
-  - Any specific Stripe SDK configuration needed?
-  - Was there a particular version of `@stripe/stripe-js` that worked?
-
-### **4. Deployment Setup**
-- **Where is the frontend deployed?** (Vercel/Netlify/Railway/Other?)
-- **How did you handle environment variables for production?**
-- **Any build-time configuration needed for Railway integration?**
-
-### **5. Previous Working Implementation**
-- **Can you share the exact configuration that was working?**
-  - Environment variable setup
-  - Any additional configuration files
-  - Specific deployment steps for Railway integration
-
----
-
-## 🛠 **WHAT WE'VE ALREADY TRIED**
-
-- ✅ **Verified backend works** (Railway logs show successful payment session creation)
-- ✅ **Added `.env` file locally** (works for development)
-- ✅ **Confirmed cart flow works** (reaches Step 3 payment successfully)
-- ✅ **Verified Stripe package installed** (`@stripe/stripe-js`)
-- ✅ **Fixed cart implementation conflicts** (unified to single working system)
-
----
-
-## 🎯 **SPECIFIC HELP NEEDED**
-
-**We need guidance on:**
-1. **Production environment variable configuration** for Stripe keys
-2. **Railway-specific setup requirements** for frontend-backend communication  
-3. **Any missing configuration** that was working in previous implementation
-4. **Deployment steps** to ensure Stripe integration works in production
-
----
-
-## 📊 **CURRENT STATE**
-
-- **Backend**: ✅ Fully functional on Railway
-- **Frontend Development**: ✅ Working locally with `.env` file
-- **Frontend Production**: ❌ Stripe initialization failing
-- **User Experience**: ❌ Cannot complete payments
-
----
-
-**Thank you for your assistance! Any insights on how you successfully set up the Stripe integration with Railway would be greatly appreciated.** 
+BohX7m_w.js:45 🔧 Medusa Plugin Initialized
+BohX7m_w.js:45 📍 Backend URL: https://robert-gaunce-art-medusa-production.up.railway.app
+BohX7m_w.js:45 🔑 Publishable Key: ✅ Set
+BohX7m_w.js:45 🔍 Medusa SDK object: $b
+BohX7m_w.js:45 🔍 Available properties: Array(4)
+BohX7m_w.js:45 🔍 Has .store? true
+BohX7m_w.js:45 🔍 Has .carts? false
+BohX7m_w.js:45 🔍 Has .cart? false
+BohX7m_w.js:45 🔍 store properties: Array(10)
+CbUgSp2E.js:1 🟦 [SHOP PAGE] Initializing shop page
+CbUgSp2E.js:1 🔶 [COMPOSABLE] useProducts called
+CbUgSp2E.js:1 📊 [COMPOSABLE] Returning products: 0
+CbUgSp2E.js:1 🛒 [CART STORE] Initializing cart...
+CbUgSp2E.js:1 🛒 [CART STORE] No saved cart, creating new one
+CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (CbUgSp2E.js:1:15753)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at Proxy.initializeCart (CbUgSp2E.js:1:15542)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at CbUgSp2E.js:1:24589
+    at BohX7m_w.js:15:6550
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at t.__weh.t.__weh (BohX7m_w.js:15:6430)
+    at Ni (BohX7m_w.js:14:1619)
+createCart @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🔄 [COMPOSABLE] Transforming response: Object
+CbUgSp2E.js:1 🔄 [COMPOSABLE] Products count: 1
+CbUgSp2E.js:1 👀 [COMPOSABLE] Data changed: Object
+CbUgSp2E.js:1 👀 [COMPOSABLE] Products in data: 1
+CbUgSp2E.js:1 📊 [COMPOSABLE] Returning products: 1
+CbUgSp2E.js:1 🛍️ [SHOP PAGE] Products updated: 1
+CbUgSp2E.js:1 🛍️ [SHOP PAGE] Products data: Array(1)
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Full product: Object
+CbUgSp2E.js:1 ⏳ [COMPOSABLE] Pending status: false
+CbUgSp2E.js:1 🛍️ [SHOP PAGE] Loading state: false
+CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: Object
+CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
+CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (CbUgSp2E.js:1:15753)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at Proxy.addItem (CbUgSp2E.js:1:16347)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at n (CbUgSp2E.js:1:24408)
+    at onClick (CbUgSp2E.js:1:26390)
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
+createCart @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+addItem @ CbUgSp2E.js:1
+CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+n @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: Object
+CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
+CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (CbUgSp2E.js:1:15753)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at Proxy.addItem (CbUgSp2E.js:1:16347)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at n (CbUgSp2E.js:1:24408)
+    at onClick (CbUgSp2E.js:1:26390)
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
+createCart @ CbUgSp2E.js:1
+$ @ BohX7m_w.js:23
+addItem @ CbUgSp2E.js:1
+$ @ BohX7m_w.js:23
+n @ CbUgSp2E.js:1
+onClick @ CbUgSp2E.js:1
+si @ BohX7m_w.js:14
+Ot @ BohX7m_w.js:14
+n @ BohX7m_w.js:19
+CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+addItem @ CbUgSp2E.js:1
+CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+n @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🟦 [SHOP PAGE] Initializing shop page
+CbUgSp2E.js:1 🔶 [COMPOSABLE] useProducts called
+CbUgSp2E.js:1 📊 [COMPOSABLE] Returning products: 0
+CbUgSp2E.js:1 🛒 [CART STORE] Initializing cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Found saved cart ID: cart_01K8VRSP7HD5VCFQ4GXX92N76N
+CbUgSp2E.js:1 🛒 [CART STORE] Retrieving existing cart...
+CbUgSp2E.js:1 ❌ [CART STORE] Invalid cart, creating new one: TypeError: Cannot read properties of undefined (reading 'retrieve')
+    at Proxy.initializeCart (CbUgSp2E.js:1:15093)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at CbUgSp2E.js:1:24589
+    at BohX7m_w.js:15:6550
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at t.__weh.t.__weh (BohX7m_w.js:15:6430)
+    at Ni (BohX7m_w.js:14:1619)
+    at bf (BohX7m_w.js:14:1928)
+initializeCart @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (CbUgSp2E.js:1:15753)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at Proxy.initializeCart (CbUgSp2E.js:1:15449)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at CbUgSp2E.js:1:24589
+    at BohX7m_w.js:15:6550
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at t.__weh.t.__weh (BohX7m_w.js:15:6430)
+    at Ni (BohX7m_w.js:14:1619)
+createCart @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🔄 [COMPOSABLE] Transforming response: Object
+CbUgSp2E.js:1 🔄 [COMPOSABLE] Products count: 2
+CbUgSp2E.js:1 👀 [COMPOSABLE] Data changed: Object
+CbUgSp2E.js:1 👀 [COMPOSABLE] Products in data: 2
+CbUgSp2E.js:1 📊 [COMPOSABLE] Returning products: 2
+CbUgSp2E.js:1 🛍️ [SHOP PAGE] Products updated: 2
+CbUgSp2E.js:1 🛍️ [SHOP PAGE] Products data: Array(2)
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] Product 1 - "test"
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Wheezy-01K8VJW4YDBWG1VN7A6DPJZ635.jpg
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Full product: Object
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] Product 2 - "Forest"
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Thumbnail: https://robert-gaunce-art-media.atl1.cdn.digitaloceanspaces.com/Hero-01K8VRYVQ82E278NPFQZJ6FDJF.jpg
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Images: Array(1)
+CbUgSp2E.js:1 🖼️ [SHOP PAGE] - Full product: Object
+CbUgSp2E.js:1 ⏳ [COMPOSABLE] Pending status: false
+CbUgSp2E.js:1 🛍️ [SHOP PAGE] Loading state: false
+CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: Object
+CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
+CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (CbUgSp2E.js:1:15753)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at Proxy.addItem (CbUgSp2E.js:1:16347)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at n (CbUgSp2E.js:1:24408)
+    at onClick (CbUgSp2E.js:1:26390)
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
+createCart @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+addItem @ CbUgSp2E.js:1
+CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+n @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🛒 [CART STORE] Toggle cart: true
+CbUgSp2E.js:1 🛒 [CART STORE] Toggle cart: false
+CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: Object
+CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
+CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (CbUgSp2E.js:1:15753)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at Proxy.addItem (CbUgSp2E.js:1:16347)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at n (CbUgSp2E.js:1:24408)
+    at onClick (CbUgSp2E.js:1:26390)
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
+createCart @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+addItem @ CbUgSp2E.js:1
+CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+n @ CbUgSp2E.js:1
+CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: {variantId: 'variant_01K8VRYWHY2MYTX4TY9GCXBZVE', quantity: 1}
+CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
+CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (CbUgSp2E.js:1:15753)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at Proxy.addItem (CbUgSp2E.js:1:16347)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at n (CbUgSp2E.js:1:24408)
+    at onClick (CbUgSp2E.js:1:26390)
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
+createCart @ CbUgSp2E.js:1
+$ @ BohX7m_w.js:23
+addItem @ CbUgSp2E.js:1
+$ @ BohX7m_w.js:23
+n @ CbUgSp2E.js:1
+onClick @ CbUgSp2E.js:1
+si @ BohX7m_w.js:14
+Ot @ BohX7m_w.js:14
+n @ BohX7m_w.js:19
+CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+addItem @ CbUgSp2E.js:1
+await in addItem
+$ @ BohX7m_w.js:23
+n @ CbUgSp2E.js:1
+onClick @ CbUgSp2E.js:1
+si @ BohX7m_w.js:14
+Ot @ BohX7m_w.js:14
+n @ BohX7m_w.js:19
+CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+n @ CbUgSp2E.js:1
+await in n
+onClick @ CbUgSp2E.js:1
+si @ BohX7m_w.js:14
+Ot @ BohX7m_w.js:14
+n @ BohX7m_w.js:19
+CbUgSp2E.js:1 🛒 [CART STORE] Adding item to cart: {variantId: 'variant_01K8VRYWHY2MYTX4TY9GCXBZVE', quantity: 1}
+CbUgSp2E.js:1 🛒 [CART STORE] No cart ID, creating cart first
+CbUgSp2E.js:1 🛒 [CART STORE] Creating new cart...
+CbUgSp2E.js:1 🛒 [CART STORE] Calling Medusa carts.create()
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to create cart: TypeError: Cannot read properties of undefined (reading 'create')
+    at Proxy.createCart (CbUgSp2E.js:1:15753)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at Proxy.addItem (CbUgSp2E.js:1:16347)
+    at Proxy.$ (BohX7m_w.js:23:2323)
+    at n (CbUgSp2E.js:1:24408)
+    at onClick (CbUgSp2E.js:1:26390)
+    at si (BohX7m_w.js:14:38)
+    at Ot (BohX7m_w.js:14:109)
+    at HTMLButtonElement.n (BohX7m_w.js:19:7246)
+createCart @ CbUgSp2E.js:1
+$ @ BohX7m_w.js:23
+addItem @ CbUgSp2E.js:1
+$ @ BohX7m_w.js:23
+n @ CbUgSp2E.js:1
+onClick @ CbUgSp2E.js:1
+si @ BohX7m_w.js:14
+Ot @ BohX7m_w.js:14
+n @ BohX7m_w.js:19
+CbUgSp2E.js:1 🛒 [CART STORE] Calling carts.lineItems.create() null
+CbUgSp2E.js:1 ❌ [CART STORE] Failed to add item: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+addItem @ CbUgSp2E.js:1
+await in addItem
+$ @ BohX7m_w.js:23
+n @ CbUgSp2E.js:1
+onClick @ CbUgSp2E.js:1
+si @ BohX7m_w.js:14
+Ot @ BohX7m_w.js:14
+n @ BohX7m_w.js:19
+CbUgSp2E.js:1 Error adding to cart: TypeError: Cannot read properties of undefined (reading 'lineItems')
+    at Proxy.addItem (CbUgSp2E.js:1:16502)
+    at async n (CbUgSp2E.js:1:24400)
+n @ CbUgSp2E.js:1
+await in n
+onClick @ CbUgSp2E.js:1
+si @ BohX7m_w.js:14
+Ot @ BohX7m_w.js:14
+n @ BohX7m_w.js:19

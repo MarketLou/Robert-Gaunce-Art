@@ -159,10 +159,10 @@ const removeFromCart = async (itemId: string) => {
   }
 }
 
-// Handle checkout (placeholder for Stripe integration)
+// Handle checkout - navigate to checkout page
 const handleCheckout = () => {
-  // TODO: Implement Stripe checkout in Step 5
-  alert('Stripe checkout will be implemented in Step 5')
+  cartStore.toggleCart() // Close sidebar
+  navigateTo('/checkout')
 }
 </script>
 
